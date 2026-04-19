@@ -32,10 +32,10 @@ export default function CartPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-[#f8f8fd] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center">
         <div className="text-center">
-          <div className="w-24 h-24 rounded-full bg-[#f5f3ff] flex items-center justify-center mx-auto mb-6">
-            <ShoppingBag className="w-10 h-10 text-[#635ad9]" />
+          <div className="w-24 h-24 rounded-full bg-[#EEF2FF] flex items-center justify-center mx-auto mb-6">
+            <ShoppingBag className="w-10 h-10 text-[#6366F1]" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             Your cart is empty
@@ -43,7 +43,7 @@ export default function CartPage() {
           <p className="text-gray-500 mb-6">
             Add some fresh products to your cart!
           </p>
-          <Button asChild className="bg-[#635ad9] hover:bg-[#4f46e5]">
+          <Button asChild className="bg-[#6366F1] hover:bg-[#4F46E5]">
             <Link href="/shop">Start Shopping</Link>
           </Button>
         </div>
@@ -52,11 +52,11 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f8fd]">
-      <div className="bg-white border-b border-[#e8e8f0] py-6">
+    <div className="min-h-screen bg-[#F9FAFB]">
+      <div className="bg-white border-b border-[#D1D5DB] py-6">
         <div className="max-w-7xl mx-auto px-4">
           <h1 className="text-2xl font-bold text-gray-900">
-            Shopping <span className="text-[#635ad9]">Cart</span>
+            Shopping <span className="text-[#6366F1]">Cart</span>
           </h1>
           <p className="text-gray-500 text-sm mt-1">
             {getItemCount()} items in your cart
@@ -71,10 +71,10 @@ export default function CartPage() {
             {items.map(({ product, quantity }) => (
               <div
                 key={product.id}
-                className="bg-white rounded-2xl border border-[#e8e8f0] p-5 flex gap-4"
+                className="bg-white rounded-2xl border border-[#D1D5DB] p-5 flex gap-4"
               >
                 <Link href={`/shop/${product.slug}`} className="shrink-0">
-                  <div className="w-24 h-24 rounded-xl overflow-hidden bg-[#f8f8fd]">
+                  <div className="w-24 h-24 rounded-xl overflow-hidden bg-[#F9FAFB]">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -85,11 +85,11 @@ export default function CartPage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <p className="text-xs text-[#635ad9] font-medium">
+                      <p className="text-xs text-[#6366F1] font-medium">
                         {product.category}
                       </p>
                       <Link href={`/shop/${product.slug}`}>
-                        <h3 className="font-semibold text-gray-900 text-sm hover:text-[#635ad9] transition-colors">
+                        <h3 className="font-semibold text-gray-900 text-sm hover:text-[#6366F1] transition-colors">
                           {product.name}
                         </h3>
                       </Link>
@@ -109,10 +109,10 @@ export default function CartPage() {
                   </div>
 
                   <div className="flex items-center justify-between mt-3">
-                    <div className="flex items-center gap-1 border border-[#e8e8f0] rounded-lg overflow-hidden">
+                    <div className="flex items-center gap-1 border border-[#D1D5DB] rounded-lg overflow-hidden">
                       <button
                         onClick={() => updateQuantity(product.id, quantity - 1)}
-                        className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-[#f8f8fd] transition-colors"
+                        className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-[#F9FAFB] transition-colors"
                       >
                         <Minus className="w-3 h-3" />
                       </button>
@@ -121,7 +121,7 @@ export default function CartPage() {
                       </span>
                       <button
                         onClick={() => updateQuantity(product.id, quantity + 1)}
-                        className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-[#f8f8fd] transition-colors"
+                        className="w-8 h-8 flex items-center justify-center text-gray-500 hover:bg-[#F9FAFB] transition-colors"
                       >
                         <Plus className="w-3 h-3" />
                       </button>
@@ -146,7 +146,7 @@ export default function CartPage() {
               <Button
                 asChild
                 variant="outline"
-                className="border-[#635ad9] text-[#635ad9] hover:bg-[#f5f3ff]"
+                className="border-[#6366F1] text-[#6366F1] hover:bg-[#EEF2FF]"
               >
                 <Link href="/shop">← Continue Shopping</Link>
               </Button>
@@ -156,9 +156,9 @@ export default function CartPage() {
           {/* Order summary */}
           <div className="space-y-4">
             {/* Coupon */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
               <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                <Tag className="w-4 h-4 text-[#635ad9]" />
+                <Tag className="w-4 h-4 text-[#6366F1]" />
                 Coupon Code
               </h3>
               {appliedCoupon ? (
@@ -188,12 +188,12 @@ export default function CartPage() {
                     value={coupon}
                     onChange={(e) => setCoupon(e.target.value)}
                     onKeyDown={(e) => e.key === "Enter" && applyCoupon()}
-                    className="border-[#e8e8f0] text-sm"
+                    className="border-[#D1D5DB] text-sm"
                   />
                   <Button
                     onClick={applyCoupon}
                     size="sm"
-                    className="bg-[#635ad9] hover:bg-[#4f46e5] shrink-0"
+                    className="bg-[#6366F1] hover:bg-[#4F46E5] shrink-0"
                   >
                     Apply
                   </Button>
@@ -205,7 +205,7 @@ export default function CartPage() {
             </div>
 
             {/* Summary */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
               <h3 className="font-semibold text-gray-900 mb-4">
                 Order Summary
               </h3>
@@ -234,20 +234,20 @@ export default function CartPage() {
                   </div>
                 )}
                 {subtotal < 50 && (
-                  <p className="text-[10px] text-[#635ad9] bg-[#f5f3ff] px-2 py-1.5 rounded-lg">
+                  <p className="text-[10px] text-[#6366F1] bg-[#EEF2FF] px-2 py-1.5 rounded-lg">
                     Add {formatPrice(50 - subtotal)} more for free shipping!
                   </p>
                 )}
-                <Separator className="bg-[#e8e8f0]" />
+                <Separator className="bg-[#D1D5DB]" />
                 <div className="flex justify-between text-base font-bold">
                   <span>Total</span>
-                  <span className="text-[#635ad9]">{formatPrice(total)}</span>
+                  <span className="text-[#6366F1]">{formatPrice(total)}</span>
                 </div>
               </div>
 
               <Button
                 asChild
-                className="w-full mt-5 bg-[#635ad9] hover:bg-[#4f46e5] h-12 text-base font-semibold shadow-lg shadow-[#635ad9]/25"
+                className="w-full mt-5 bg-[#6366F1] hover:bg-[#4F46E5] h-12 text-base font-semibold shadow-lg shadow-[#6366F1]/25"
               >
                 <Link href="/checkout">
                   Proceed to Checkout

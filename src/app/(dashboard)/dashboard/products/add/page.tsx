@@ -62,7 +62,7 @@ export default function AddProductPage() {
           {/* Main info */}
           <div className="lg:col-span-2 space-y-5">
             {/* Basic info */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
               <h3 className="font-bold text-gray-900 mb-5">Basic Information</h3>
               <div className="space-y-4">
                 <div className="space-y-1.5">
@@ -70,7 +70,7 @@ export default function AddProductPage() {
                   <Input
                     {...register("name", { required: true })}
                     placeholder="e.g., Organic Fresh Tomatoes"
-                    className={cn("border-[#e8e8f0]", errors.name && "border-red-400")}
+                    className={cn("border-[#D1D5DB]", errors.name && "border-red-400")}
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -79,14 +79,14 @@ export default function AddProductPage() {
                     {...register("description", { required: true })}
                     rows={4}
                     placeholder="Describe the product in detail..."
-                    className="w-full rounded-lg border border-[#e8e8f0] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#635ad9]/20 focus:border-[#635ad9] resize-none"
+                    className="w-full rounded-lg border border-[#D1D5DB] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]/20 focus:border-[#6366F1] resize-none"
                   />
                 </div>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <Label className="text-sm font-medium">Category *</Label>
                     <Select>
-                      <SelectTrigger className="border-[#e8e8f0]">
+                      <SelectTrigger className="border-[#D1D5DB]">
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
                       <SelectContent>
@@ -98,14 +98,14 @@ export default function AddProductPage() {
                   </div>
                   <div className="space-y-1.5">
                     <Label className="text-sm font-medium">Brand</Label>
-                    <Input {...register("brand")} placeholder="e.g., Farm Fresh" className="border-[#e8e8f0]" />
+                    <Input {...register("brand")} placeholder="e.g., Farm Fresh" className="border-[#D1D5DB]" />
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Pricing */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
               <h3 className="font-bold text-gray-900 mb-5">Pricing & Inventory</h3>
               <div className="grid sm:grid-cols-3 gap-4">
                 <div className="space-y-1.5">
@@ -115,7 +115,7 @@ export default function AddProductPage() {
                     step="0.01"
                     {...register("price", { required: true })}
                     placeholder="0.00"
-                    className={cn("border-[#e8e8f0]", errors.price && "border-red-400")}
+                    className={cn("border-[#D1D5DB]", errors.price && "border-red-400")}
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -125,7 +125,7 @@ export default function AddProductPage() {
                     step="0.01"
                     {...register("originalPrice")}
                     placeholder="0.00"
-                    className="border-[#e8e8f0]"
+                    className="border-[#D1D5DB]"
                   />
                 </div>
                 <div className="space-y-1.5">
@@ -134,13 +134,13 @@ export default function AddProductPage() {
                     type="number"
                     {...register("stock", { required: true })}
                     placeholder="0"
-                    className={cn("border-[#e8e8f0]", errors.stock && "border-red-400")}
+                    className={cn("border-[#D1D5DB]", errors.stock && "border-red-400")}
                   />
                 </div>
                 <div className="space-y-1.5">
                   <Label className="text-sm font-medium">Unit</Label>
                   <Select>
-                    <SelectTrigger className="border-[#e8e8f0]">
+                    <SelectTrigger className="border-[#D1D5DB]">
                       <SelectValue placeholder="Select unit" />
                     </SelectTrigger>
                     <SelectContent>
@@ -152,13 +152,13 @@ export default function AddProductPage() {
                 </div>
                 <div className="space-y-1.5">
                   <Label className="text-sm font-medium">Weight/Size</Label>
-                  <Input {...register("weight")} placeholder="e.g., 500g" className="border-[#e8e8f0]" />
+                  <Input {...register("weight")} placeholder="e.g., 500g" className="border-[#D1D5DB]" />
                 </div>
               </div>
             </div>
 
             {/* Tags */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
               <h3 className="font-bold text-gray-900 mb-4">Tags</h3>
               <div className="flex gap-2 mb-3">
                 <Input
@@ -166,16 +166,16 @@ export default function AddProductPage() {
                   onChange={(e) => setTagInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
                   placeholder="Add a tag and press Enter"
-                  className="border-[#e8e8f0]"
+                  className="border-[#D1D5DB]"
                 />
-                <Button type="button" onClick={addTag} variant="outline" className="border-[#635ad9] text-[#635ad9] shrink-0">
+                <Button type="button" onClick={addTag} variant="outline" className="border-[#6366F1] text-[#6366F1] shrink-0">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
               {tags.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   {tags.map((tag) => (
-                    <span key={tag} className="flex items-center gap-1 bg-[#f5f3ff] text-[#635ad9] text-xs px-2.5 py-1 rounded-full">
+                    <span key={tag} className="flex items-center gap-1 bg-[#EEF2FF] text-[#6366F1] text-xs px-2.5 py-1 rounded-full">
                       {tag}
                       <button type="button" onClick={() => setTags(tags.filter((t) => t !== tag))}>
                         <X className="w-3 h-3" />
@@ -190,20 +190,20 @@ export default function AddProductPage() {
           {/* Right panel */}
           <div className="space-y-5">
             {/* Image upload */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
               <h3 className="font-bold text-gray-900 mb-4">Product Images</h3>
-              <div className="border-2 border-dashed border-[#e8e8f0] rounded-xl p-6 text-center hover:border-[#635ad9] transition-colors cursor-pointer">
+              <div className="border-2 border-dashed border-[#D1D5DB] rounded-xl p-6 text-center hover:border-[#6366F1] transition-colors cursor-pointer">
                 <Upload className="w-8 h-8 text-gray-300 mx-auto mb-2" />
                 <p className="text-sm text-gray-500">
                   Drag & drop or{" "}
-                  <span className="text-[#635ad9] cursor-pointer">browse</span>
+                  <span className="text-[#6366F1] cursor-pointer">browse</span>
                 </p>
                 <p className="text-[10px] text-gray-400 mt-1">PNG, JPG up to 10MB</p>
               </div>
               {images.length > 0 && (
                 <div className="grid grid-cols-3 gap-2 mt-3">
                   {images.map((img, i) => (
-                    <div key={i} className="relative rounded-lg overflow-hidden aspect-square bg-[#f8f8fd]">
+                    <div key={i} className="relative rounded-lg overflow-hidden aspect-square bg-[#F9FAFB]">
                       <img src={img} alt="" className="w-full h-full object-cover" />
                     </div>
                   ))}
@@ -212,7 +212,7 @@ export default function AddProductPage() {
             </div>
 
             {/* Product flags */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
               <h3 className="font-bold text-gray-900 mb-4">Product Options</h3>
               <div className="space-y-3">
                 {[
@@ -224,7 +224,7 @@ export default function AddProductPage() {
                   <div key={opt.id} className="flex items-center gap-2">
                     <Checkbox
                       id={opt.id}
-                      className="border-[#e8e8f0] data-[state=checked]:bg-[#635ad9] data-[state=checked]:border-[#635ad9]"
+                      className="border-[#D1D5DB] data-[state=checked]:bg-[#6366F1] data-[state=checked]:border-[#6366F1]"
                     />
                     <Label htmlFor={opt.id} className="text-sm text-gray-600 cursor-pointer">
                       {opt.label}
@@ -239,7 +239,7 @@ export default function AddProductPage() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-[#635ad9] hover:bg-[#4f46e5] h-11 font-semibold"
+                className="w-full bg-[#6366F1] hover:bg-[#4F46E5] h-11 font-semibold"
               >
                 {isLoading ? (
                   <span className="flex items-center gap-2">
@@ -250,7 +250,7 @@ export default function AddProductPage() {
                   "Save Product"
                 )}
               </Button>
-              <Button type="button" variant="outline" className="w-full border-[#e8e8f0]" asChild>
+              <Button type="button" variant="outline" className="w-full border-[#D1D5DB]" asChild>
                 <Link href="/dashboard/products">Cancel</Link>
               </Button>
             </div>

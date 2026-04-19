@@ -5,12 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatPrice(price: number, currency = "USD"): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    minimumFractionDigits: 2,
-  }).format(price);
+export function formatPrice(price: number): string {
+  return `¥${price.toFixed(2)}`;
 }
 
 export function formatDate(date: Date | string): string {

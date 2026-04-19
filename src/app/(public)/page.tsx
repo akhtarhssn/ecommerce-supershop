@@ -20,6 +20,7 @@ import { Badge } from "@/components/ui/badge";
 import ProductCard from "@/components/ui/ProductCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { products, categories } from "@/lib/mock-data";
+import HeroCarousel from "@/components/home/HeroCarousel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,20 +74,9 @@ const testimonials = [
 
 export default function HomePage() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const heroTextRef = useRef<HTMLDivElement>(null);
-  const heroImageRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero entrance animation
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.from(".hero-badge", { opacity: 0, y: 20, duration: 0.6 })
-        .from(".hero-title", { opacity: 0, y: 30, duration: 0.7 }, "-=0.3")
-        .from(".hero-desc", { opacity: 0, y: 20, duration: 0.6 }, "-=0.4")
-        .from(".hero-buttons", { opacity: 0, y: 20, duration: 0.5 }, "-=0.3")
-        .from(".hero-stats", { opacity: 0, y: 20, duration: 0.5 }, "-=0.3")
-        .from(".hero-image", { opacity: 0, scale: 0.9, duration: 0.8 }, "-=0.6");
-
       // Scroll-triggered reveals
       gsap.utils.toArray(".scroll-reveal").forEach((el) => {
         gsap.from(el as Element, {
@@ -111,93 +101,10 @@ export default function HomePage() {
   const newArrivals = products.filter((p) => p.isNew).slice(0, 4);
 
   return (
-    <div ref={heroRef}>
-      {/* ─── Hero ─── */}
-      <section className="hero-gradient overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-6" ref={heroTextRef}>
-            <div className="hero-badge">
-              <span className="inline-flex items-center gap-2 bg-[#635ad9]/10 text-[#635ad9] px-4 py-1.5 rounded-full text-sm font-medium">
-                <Leaf className="w-3.5 h-3.5" />
-                100% Fresh & Natural
-              </span>
-            </div>
-            <h1 className="hero-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
-              Fresh Grocery{" "}
-              <span className="text-[#635ad9]">Delivered</span>{" "}
-              to Your Door
-            </h1>
-            <p className="hero-desc text-gray-600 text-lg leading-relaxed max-w-md">
-              Shop from thousands of fresh organic products. Get the best deals
-              on fresh vegetables, fruits, dairy, and more — delivered same day.
-            </p>
-            <div className="hero-buttons flex flex-wrap gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-[#635ad9] hover:bg-[#4f46e5] text-white px-8 h-13 text-base font-semibold shadow-lg shadow-[#635ad9]/30"
-              >
-                <Link href="/shop">
-                  Shop Now
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-13 text-base font-medium border-[#635ad9] text-[#635ad9] hover:bg-[#f5f3ff]"
-              >
-                <Link href="/about">Learn More</Link>
-              </Button>
-            </div>
-            <div className="hero-stats flex items-center gap-8 pt-2">
-              {[
-                { value: "10K+", label: "Products" },
-                { value: "50K+", label: "Customers" },
-                { value: "4.9★", label: "Rating" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-2xl font-bold text-gray-900">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-gray-500">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div
-            className="hero-image relative flex items-center justify-center"
-            ref={heroImageRef}
-          >
-            {/* Decorative circles */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 rounded-full bg-[#635ad9]/10 animate-pulse" />
-              <div className="absolute w-64 h-64 rounded-full bg-[#635ad9]/15" />
-            </div>
-            <div className="relative z-10 grid grid-cols-2 gap-4">
-              {featuredProducts.slice(0, 4).map((product, i) => (
-                <Link
-                  key={product.id}
-                  href={`/shop/${product.slug}`}
-                  className="bg-white rounded-2xl p-3 shadow-lg hover:shadow-xl transition-shadow"
-                >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full aspect-square object-cover rounded-xl mb-2"
-                  />
-                  <p className="text-xs font-semibold text-gray-800 line-clamp-1">
-                    {product.name}
-                  </p>
-                  <p className="text-xs text-[#635ad9] font-bold">
-                    ${product.price}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </div>
+    <div ref={heroRef} className="bg-white">
+      {/* ─── Hero Carousel ─── */}
+      <section>
+        <HeroCarousel />
       </section>
 
       {/* ─── Features ─── */}
@@ -380,7 +287,7 @@ export default function HomePage() {
                 See All <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 grid grid-cols-2 gap-5">
               {bestSellers.map((product) => (
                 <div key={product.id} className="scroll-reveal">
                   <ProductCard product={product} view="list" />
@@ -404,7 +311,7 @@ export default function HomePage() {
                 See All <ChevronRight className="w-4 h-4" />
               </Link>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 grid grid-cols-2 gap-5">
               {newArrivals.map((product) => (
                 <div key={product.id} className="scroll-reveal">
                   <ProductCard product={product} view="list" />

@@ -16,7 +16,7 @@ export default function BlogPage() {
   const rest = blogPosts.slice(1);
 
   return (
-    <div className="min-h-screen bg-[#f8f8fd]">
+    <div className="min-h-screen bg-[#F9FAFB]">
       {/* Header */}
       <section className="hero-gradient py-14 text-center">
         <div className="max-w-2xl mx-auto px-4">
@@ -32,8 +32,8 @@ export default function BlogPage() {
               key={cat}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 cat === "All"
-                  ? "bg-[#635ad9] text-white"
-                  : "bg-white border border-[#e8e8f0] text-gray-600 hover:border-[#635ad9] hover:text-[#635ad9]"
+                  ? "bg-[#6366F1] text-white"
+                  : "bg-white border border-[#D1D5DB] text-gray-600 hover:border-[#6366F1] hover:text-[#6366F1]"
               }`}
             >
               {cat}
@@ -51,7 +51,7 @@ export default function BlogPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-              <Badge className="bg-[#635ad9] text-white border-0 mb-3">
+              <Badge className="bg-[#6366F1] text-white border-0 mb-3">
                 {featured.category}
               </Badge>
               <h2 className="text-2xl md:text-3xl font-bold mb-2 leading-tight">
@@ -82,19 +82,19 @@ export default function BlogPage() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {rest.map((post) => (
             <Link key={post.id} href={`/blog/${post.slug}`} className="group">
-              <div className="bg-white rounded-2xl border border-[#e8e8f0] overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-2xl border border-[#D1D5DB] overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="relative overflow-hidden aspect-video">
                   <img
                     src={post.image}
                     alt={post.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <Badge className="absolute top-3 left-3 bg-[#635ad9] text-white border-0 text-[10px]">
+                  <Badge className="absolute top-3 left-3 bg-[#6366F1] text-white border-0 text-[10px]">
                     {post.category}
                   </Badge>
                 </div>
                 <div className="p-5">
-                  <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#635ad9] transition-colors">
+                  <h3 className="font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-[#6366F1] transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-sm text-gray-500 line-clamp-2 mb-4">
@@ -105,7 +105,7 @@ export default function BlogPage() {
                       <img
                         src={post.authorAvatar}
                         alt={post.author}
-                        className="w-7 h-7 rounded-full bg-[#f5f3ff]"
+                        className="w-7 h-7 rounded-full bg-[#EEF2FF]"
                       />
                       <div>
                         <p className="text-xs font-medium text-gray-900">
@@ -128,7 +128,7 @@ export default function BlogPage() {
         </div>
 
         {/* Newsletter in blog */}
-        <div className="bg-[#635ad9] rounded-3xl p-8 text-center">
+        <div className="bg-[#6366F1] rounded-3xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-2">
             Get Fresh Content Weekly
           </h3>

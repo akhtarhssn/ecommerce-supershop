@@ -35,6 +35,7 @@ import {
 import { useCartStore } from "@/store/cart";
 import { useWishlistStore } from "@/store/wishlist";
 import { cn } from "@/lib/utils";
+import { CartSheet } from "@/components/cart/CartSheet";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -72,7 +73,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50">
       {/* Top bar */}
-      <div className="bg-[#635ad9] text-white py-2 px-4 hidden md:block">
+      {/* <div className="bg-[#635ad9] text-white py-2 px-4 hidden md:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between text-xs">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5">
@@ -97,7 +98,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Main nav */}
       <div
@@ -179,14 +180,16 @@ export default function Navbar() {
                   </Badge>
                 )}
               </Link>
-              <Link href="/cart" className="relative p-2 text-gray-600 hover:text-[#635ad9] transition-colors">
-                <ShoppingCart className="w-5 h-5" />
-                {cartCount > 0 && (
-                  <Badge className="absolute -top-1 -right-1 w-4 h-4 p-0 flex items-center justify-center bg-[#635ad9] text-white text-[10px] border-0">
-                    {cartCount}
-                  </Badge>
-                )}
-              </Link>
+              <CartSheet>
+                <div className="relative p-2 text-gray-600 hover:text-[#635ad9] transition-colors focus:outline-none">
+                  <ShoppingCart className="w-5 h-5" />
+                  {cartCount > 0 && (
+                    <Badge className="absolute -top-1 -right-1 w-4 h-4 p-0 flex items-center justify-center bg-[#635ad9] text-white text-[10px] border-0">
+                      {cartCount}
+                    </Badge>
+                  )}
+                </div>
+              </CartSheet>
               <DropdownMenu>
                 <DropdownMenuTrigger className="p-2 text-gray-600 hover:text-[#635ad9] rounded-md hover:bg-accent transition-colors">
                   <User className="w-5 h-5" />

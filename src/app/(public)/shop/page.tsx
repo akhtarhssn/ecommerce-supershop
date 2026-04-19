@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
+import { gsap } from "gsap";
 import { SlidersHorizontal, Grid3X3, List, ChevronDown, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -163,7 +164,7 @@ function ShopContent() {
                 id={`cat-${cat}`}
                 checked={selectedCategories.includes(cat)}
                 onCheckedChange={() => toggleCategory(cat)}
-                className="border-[#e8e8f0] data-[state=checked]:bg-[#635ad9] data-[state=checked]:border-[#635ad9]"
+                className="border-[#D1D5DB] data-[state=checked]:bg-[#6366F1] data-[state=checked]:border-[#6366F1]"
               />
               <Label
                 htmlFor={`cat-${cat}`}
@@ -176,7 +177,7 @@ function ShopContent() {
         </div>
       </div>
 
-      <Separator className="bg-[#e8e8f0]" />
+      <Separator className="bg-[#D1D5DB]" />
 
       {/* Price Range */}
       <div>
@@ -197,7 +198,7 @@ function ShopContent() {
         </div>
       </div>
 
-      <Separator className="bg-[#e8e8f0]" />
+      <Separator className="bg-[#D1D5DB]" />
 
       {/* Organic filter */}
       <div>
@@ -210,7 +211,7 @@ function ShopContent() {
               setOrganicOnly(!!checked);
               setCurrentPage(1);
             }}
-            className="border-[#e8e8f0] data-[state=checked]:bg-[#635ad9] data-[state=checked]:border-[#635ad9]"
+            className="border-[#D1D5DB] data-[state=checked]:bg-[#6366F1] data-[state=checked]:border-[#6366F1]"
           />
           <Label
             htmlFor="organic"
@@ -221,7 +222,7 @@ function ShopContent() {
         </div>
       </div>
 
-      <Separator className="bg-[#e8e8f0]" />
+      <Separator className="bg-[#D1D5DB]" />
 
       {/* Brands */}
       <div>
@@ -233,7 +234,7 @@ function ShopContent() {
                 id={`brand-${brand}`}
                 checked={selectedBrands.includes(brand)}
                 onCheckedChange={() => toggleBrand(brand)}
-                className="border-[#e8e8f0] data-[state=checked]:bg-[#635ad9] data-[state=checked]:border-[#635ad9]"
+                className="border-[#D1D5DB] data-[state=checked]:bg-[#6366F1] data-[state=checked]:border-[#6366F1]"
               />
               <Label
                 htmlFor={`brand-${brand}`}
@@ -248,10 +249,29 @@ function ShopContent() {
     </div>
   );
 
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (gridRef.current) {
+      gsap.fromTo(
+        gridRef.current.children,
+        { opacity: 0, y: 20 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: 0.4, 
+          stagger: 0.05, 
+          ease: "power2.out",
+          overwrite: "auto"
+        }
+      );
+    }
+  }, [paginated]);
+
   return (
-    <div className="min-h-screen bg-[#f8f8fd]">
+    <div className="min-h-screen bg-[#F9FAFB]">
       {/* Header */}
-      <div className="bg-white border-b border-[#e8e8f0] py-6">
+      <div className="bg-white border-b border-[#D1D5DB] py-6">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <SectionHeading
@@ -262,11 +282,11 @@ function ShopContent() {
             <div className="flex items-center gap-3">
               {/* Mobile filter trigger */}
               <Sheet>
-                <SheetTrigger className="lg:hidden border border-[#635ad9] text-[#635ad9] h-8 px-3 rounded-md text-xs font-medium flex items-center justify-center gap-2 hover:bg-[#635ad9]/10 transition-colors">
+                <SheetTrigger className="lg:hidden border border-[#6366F1] text-[#6366F1] h-8 px-3 rounded-md text-xs font-medium flex items-center justify-center gap-2 hover:bg-[#6366F1]/10 transition-colors">
                   <SlidersHorizontal className="w-4 h-4" />
                   Filters
                   {activeFilterCount > 0 && (
-                    <Badge className="bg-[#635ad9] text-white h-4 w-4 p-0 flex items-center justify-center text-[10px]">
+                    <Badge className="bg-[#6366F1] text-white h-4 w-4 p-0 flex items-center justify-center text-[10px]">
                       {activeFilterCount}
                     </Badge>
                   )}
@@ -280,7 +300,7 @@ function ShopContent() {
               </Sheet>
 
               <Select value={sortBy} onValueChange={(val: any) => setSortBy(val || "")}>
-                <SelectTrigger className="w-44 h-9 border-[#e8e8f0] text-sm">
+                <SelectTrigger className="w-44 h-9 border-[#D1D5DB] text-sm">
                   <SelectValue placeholder="Sort by" />
                 </SelectTrigger>
                 <SelectContent>
@@ -293,12 +313,12 @@ function ShopContent() {
                 </SelectContent>
               </Select>
 
-              <div className="flex items-center gap-1 border border-[#e8e8f0] rounded-lg p-0.5">
+              <div className="flex items-center gap-1 border border-[#D1D5DB] rounded-lg p-0.5">
                 <button
                   onClick={() => setView("grid")}
                   className={`p-1.5 rounded-md transition-colors ${
                     view === "grid"
-                      ? "bg-[#635ad9] text-white"
+                      ? "bg-[#6366F1] text-white"
                       : "text-gray-400 hover:text-gray-600"
                   }`}
                 >
@@ -308,7 +328,7 @@ function ShopContent() {
                   onClick={() => setView("list")}
                   className={`p-1.5 rounded-md transition-colors ${
                     view === "list"
-                      ? "bg-[#635ad9] text-white"
+                      ? "bg-[#6366F1] text-white"
                       : "text-gray-400 hover:text-gray-600"
                   }`}
                 >
@@ -324,9 +344,9 @@ function ShopContent() {
         <div className="flex gap-8">
           {/* Desktop sidebar */}
           <aside className="hidden lg:block w-64 shrink-0">
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5 sticky top-24">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5 sticky top-24">
               <h3 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <SlidersHorizontal className="w-4 h-4 text-[#635ad9]" />
+                <SlidersHorizontal className="w-4 h-4 text-[#6366F1]" />
                 Filter Products
               </h3>
               <FilterSidebar />
@@ -342,7 +362,7 @@ function ShopContent() {
                   <Badge
                     key={cat}
                     variant="secondary"
-                    className="gap-1 bg-[#f5f3ff] text-[#635ad9] border border-[#635ad9]/30"
+                    className="gap-1 bg-[#EEF2FF] text-[#6366F1] border border-[#6366F1]/30"
                   >
                     {cat}
                     <button onClick={() => toggleCategory(cat)}>
@@ -354,7 +374,7 @@ function ShopContent() {
                   <Badge
                     key={brand}
                     variant="secondary"
-                    className="gap-1 bg-[#f5f3ff] text-[#635ad9] border border-[#635ad9]/30"
+                    className="gap-1 bg-[#EEF2FF] text-[#6366F1] border border-[#6366F1]/30"
                   >
                     {brand}
                     <button onClick={() => toggleBrand(brand)}>
@@ -385,13 +405,14 @@ function ShopContent() {
                 <p className="text-gray-500 text-sm mb-4">
                   Try adjusting your filters or search terms
                 </p>
-                <Button onClick={clearFilters} className="bg-[#635ad9] hover:bg-[#4f46e5]">
+                <Button onClick={clearFilters} className="bg-[#6366F1] hover:bg-[#4F46E5]">
                   Clear Filters
                 </Button>
               </div>
             ) : (
               <>
                 <div
+                  ref={gridRef}
                   className={
                     view === "grid"
                       ? "grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5"
@@ -411,7 +432,7 @@ function ShopContent() {
                       size="sm"
                       onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                       disabled={currentPage === 1}
-                      className="border-[#e8e8f0]"
+                      className="border-[#D1D5DB]"
                     >
                       Previous
                     </Button>
@@ -421,8 +442,8 @@ function ShopContent() {
                         onClick={() => setCurrentPage(i + 1)}
                         className={`w-9 h-9 rounded-lg text-sm font-medium transition-colors ${
                           currentPage === i + 1
-                            ? "bg-[#635ad9] text-white"
-                            : "bg-white border border-[#e8e8f0] text-gray-600 hover:border-[#635ad9] hover:text-[#635ad9]"
+                            ? "bg-[#6366F1] text-white"
+                            : "bg-white border border-[#D1D5DB] text-gray-600 hover:border-[#6366F1] hover:text-[#6366F1]"
                         }`}
                       >
                         {i + 1}
@@ -435,7 +456,7 @@ function ShopContent() {
                         setCurrentPage((p) => Math.min(totalPages, p + 1))
                       }
                       disabled={currentPage === totalPages}
-                      className="border-[#e8e8f0]"
+                      className="border-[#D1D5DB]"
                     >
                       Next
                     </Button>

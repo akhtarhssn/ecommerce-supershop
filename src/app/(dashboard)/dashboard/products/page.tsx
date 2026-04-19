@@ -48,7 +48,7 @@ export default function ProductsPage() {
           <h1 className="text-xl font-bold text-gray-900">Products</h1>
           <p className="text-sm text-gray-500">{items.length} products total</p>
         </div>
-        <Button asChild className="bg-[#635ad9] hover:bg-[#4f46e5] gap-2">
+        <Button asChild className="bg-[#6366F1] hover:bg-[#4F46E5] gap-2">
           <Link href="/dashboard/products/add">
             <Plus className="w-4 h-4" />
             Add Product
@@ -64,21 +64,21 @@ export default function ProductsPage() {
             placeholder="Search products..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-8 h-9 text-sm border-[#e8e8f0]"
+            className="pl-8 h-9 text-sm border-[#D1D5DB]"
           />
         </div>
-        <Button variant="outline" size="sm" className="gap-2 border-[#e8e8f0]">
+        <Button variant="outline" size="sm" className="gap-2 border-[#D1D5DB]">
           <Filter className="w-3.5 h-3.5" />
           Filter
         </Button>
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl border border-[#e8e8f0] overflow-hidden">
+      <div className="bg-white rounded-2xl border border-[#D1D5DB] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-[#e8e8f0] bg-[#f8f8fd]">
+              <tr className="border-b border-[#D1D5DB] bg-[#F9FAFB]">
                 {["Product", "Category", "Price", "Stock", "Status", "Rating", ""].map((h) => (
                   <th key={h} className="text-left py-3.5 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                     {h}
@@ -86,12 +86,12 @@ export default function ProductsPage() {
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#f0f0f8]">
+            <tbody className="divide-y divide-[#E5E7EB]">
               {filtered.map((product) => (
-                <tr key={product.id} className="hover:bg-[#f8f8fd] transition-colors">
+                <tr key={product.id} className="hover:bg-[#F9FAFB] transition-colors">
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#f8f8fd] shrink-0">
+                      <div className="w-10 h-10 rounded-xl overflow-hidden bg-[#F9FAFB] shrink-0">
                         <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
                       </div>
                       <div>
@@ -103,7 +103,7 @@ export default function ProductsPage() {
                     </div>
                   </td>
                   <td className="py-3.5 px-4">
-                    <Badge variant="secondary" className="text-[10px] bg-[#f5f3ff] text-[#635ad9] border-0">
+                    <Badge variant="secondary" className="text-[10px] bg-[#EEF2FF] text-[#6366F1] border-0">
                       {product.category}
                     </Badge>
                   </td>
@@ -128,7 +128,7 @@ export default function ProductsPage() {
                   <td className="py-3.5 px-4">
                     <div className="flex flex-col gap-1">
                       {product.isFeatured && (
-                        <Badge className="text-[9px] bg-[#635ad9] text-white border-0 px-1.5 py-0 w-fit">Featured</Badge>
+                        <Badge className="text-[9px] bg-[#6366F1] text-white border-0 px-1.5 py-0 w-fit">Featured</Badge>
                       )}
                       {product.isBestSeller && (
                         <Badge className="text-[9px] bg-[#fbb400] text-black border-0 px-1.5 py-0 w-fit">Best Seller</Badge>

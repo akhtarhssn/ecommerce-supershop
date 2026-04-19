@@ -32,7 +32,7 @@ export default function CategoriesPage() {
   const [search, setSearch] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
-  const [newCategory, setNewCategory] = useState({ name: "", color: "#635ad9" });
+  const [newCategory, setNewCategory] = useState({ name: "", color: "#6366F1" });
 
   const filtered = items.filter((c) =>
     c.name.toLowerCase().includes(search.toLowerCase())
@@ -58,7 +58,7 @@ export default function CategoriesPage() {
       color: newCategory.color,
     };
     setItems([...items, cat]);
-    setNewCategory({ name: "", color: "#635ad9" });
+    setNewCategory({ name: "", color: "#6366F1" });
     setDialogOpen(false);
     toast.success("Category added!");
   };
@@ -73,7 +73,7 @@ export default function CategoriesPage() {
         </div>
         <Button
           onClick={() => setDialogOpen(true)}
-          className="bg-[#635ad9] hover:bg-[#4f46e5] gap-2"
+          className="bg-[#6366F1] hover:bg-[#4F46E5] gap-2"
         >
           <Plus className="w-4 h-4" />
           Add Category
@@ -87,7 +87,7 @@ export default function CategoriesPage() {
           placeholder="Search categories..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="pl-8 h-9 text-sm border-[#e8e8f0]"
+          className="pl-8 h-9 text-sm border-[#D1D5DB]"
         />
       </div>
 
@@ -96,7 +96,7 @@ export default function CategoriesPage() {
         {filtered.map((cat, i) => (
           <div
             key={cat.id}
-            className="bg-white rounded-2xl border border-[#e8e8f0] p-5 hover:shadow-md transition-shadow"
+            className="bg-white rounded-2xl border border-[#D1D5DB] p-5 hover:shadow-md transition-shadow"
           >
             <div className="flex items-start justify-between mb-4">
               <div
@@ -151,7 +151,7 @@ export default function CategoriesPage() {
                 value={newCategory.name}
                 onChange={(e) => setNewCategory({ ...newCategory, name: e.target.value })}
                 placeholder="e.g., Frozen Foods"
-                className="border-[#e8e8f0]"
+                className="border-[#D1D5DB]"
               />
             </div>
             <div className="space-y-1.5">
@@ -161,17 +161,17 @@ export default function CategoriesPage() {
                   type="color"
                   value={newCategory.color}
                   onChange={(e) => setNewCategory({ ...newCategory, color: e.target.value })}
-                  className="w-10 h-10 rounded-lg cursor-pointer border border-[#e8e8f0]"
+                  className="w-10 h-10 rounded-lg cursor-pointer border border-[#D1D5DB]"
                 />
                 <span className="text-sm text-gray-500 font-mono">{newCategory.color}</span>
               </div>
             </div>
           </div>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDialogOpen(false)} className="border-[#e8e8f0]">
+            <Button variant="outline" onClick={() => setDialogOpen(false)} className="border-[#D1D5DB]">
               Cancel
             </Button>
-            <Button onClick={handleAdd} className="bg-[#635ad9] hover:bg-[#4f46e5]">
+            <Button onClick={handleAdd} className="bg-[#6366F1] hover:bg-[#4F46E5]">
               Add Category
             </Button>
           </DialogFooter>
@@ -188,7 +188,7 @@ export default function CategoriesPage() {
             This will permanently delete the category. Products in this category will become uncategorized.
           </p>
           <DialogFooter>
-            <Button variant="outline" onClick={() => setDeleteId(null)} className="border-[#e8e8f0]">
+            <Button variant="outline" onClick={() => setDeleteId(null)} className="border-[#D1D5DB]">
               Cancel
             </Button>
             <Button variant="destructive" onClick={() => deleteId && handleDelete(deleteId)}>

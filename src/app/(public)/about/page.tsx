@@ -13,7 +13,7 @@ const team = [
 const values = [
   { icon: Leaf, title: "Farm to Table", desc: "We work directly with local farmers to bring you the freshest produce possible.", color: "text-green-600 bg-green-50" },
   { icon: Heart, title: "Community First", desc: "Supporting local farmers and communities is at the heart of everything we do.", color: "text-red-500 bg-red-50" },
-  { icon: Target, title: "Quality Assured", desc: "Every product goes through rigorous quality checks before reaching your door.", color: "text-[#635ad9] bg-[#f5f3ff]" },
+  { icon: Target, title: "Quality Assured", desc: "Every product goes through rigorous quality checks before reaching your door.", color: "text-[#6366F1] bg-[#EEF2FF]" },
   { icon: Award, title: "Award-Winning", desc: "Recognized as the best online grocery platform 3 years in a row.", color: "text-[#fbb400] bg-amber-50" },
 ];
 
@@ -25,12 +25,12 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative overflow-hidden hero-gradient py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <span className="inline-block text-sm font-semibold text-[#635ad9] bg-[#f5f3ff] px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-block text-sm font-semibold text-[#6366F1] bg-[#EEF2FF] px-4 py-1.5 rounded-full mb-4">
             Our Story
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-5 max-w-2xl mx-auto leading-tight">
             Bringing Freshness to Your{" "}
-            <span className="text-[#635ad9]">Doorstep</span> Every Day
+            <span className="text-[#6366F1]">Doorstep</span> Every Day
           </h1>
           <p className="text-gray-600 text-lg max-w-xl mx-auto leading-relaxed">
             supershop was founded with a simple mission: make fresh, healthy
@@ -51,7 +51,7 @@ export default function AboutPage() {
             { value: "10K+", label: "Products Listed" },
           ].map((stat) => (
             <div key={stat.label}>
-              <p className="text-4xl font-extrabold text-[#635ad9]">{stat.value}</p>
+              <p className="text-4xl font-extrabold text-[#6366F1]">{stat.value}</p>
               <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
             </div>
           ))}
@@ -59,7 +59,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="py-16 bg-[#f8f8fd]">
+      <section className="py-16 bg-[#F9FAFB]">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
           <div>
             <SectionHeading badge="Mission" title="Why We " highlight="Do This" />
@@ -73,7 +73,7 @@ export default function AboutPage() {
               get products that are fresher than anything you'd find in a
               supermarket. No middlemen, no markups, just pure freshness.
             </p>
-            <Button asChild className="mt-6 bg-[#635ad9] hover:bg-[#4f46e5]">
+            <Button asChild className="mt-6 bg-[#6366F1] hover:bg-[#4F46E5]">
               <Link href="/shop">Shop With Us <ArrowRight className="w-4 h-4 ml-1" /></Link>
             </Button>
           </div>
@@ -107,7 +107,7 @@ export default function AboutPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((v) => (
-              <div key={v.title} className="p-6 rounded-2xl border border-[#e8e8f0] hover:shadow-lg transition-shadow text-center">
+              <div key={v.title} className="p-6 rounded-2xl border border-[#D1D5DB] hover:shadow-lg transition-shadow text-center">
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${v.color}`}>
                   <v.icon className="w-6 h-6" />
                 </div>
@@ -120,21 +120,21 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="py-16 bg-[#f8f8fd]">
+      <section className="py-16 bg-[#F9FAFB]">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-10">
             <SectionHeading badge="The Team" title="Meet Our " highlight="Leaders" centered />
           </div>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
             {team.map((member) => (
-              <div key={member.name} className="bg-white rounded-2xl border border-[#e8e8f0] p-6 text-center hover:shadow-lg transition-shadow">
+              <div key={member.name} className="bg-white rounded-2xl border border-[#D1D5DB] p-6 text-center hover:shadow-lg transition-shadow">
                 <img
                   src={member.img}
                   alt={member.name}
-                  className="w-20 h-20 rounded-full bg-[#f5f3ff] mx-auto mb-4"
+                  className="w-20 h-20 rounded-full bg-[#EEF2FF] mx-auto mb-4"
                 />
                 <h3 className="font-bold text-gray-900">{member.name}</h3>
-                <p className="text-sm text-[#635ad9]">{member.role}</p>
+                <p className="text-sm text-[#6366F1]">{member.role}</p>
               </div>
             ))}
           </div>
@@ -142,7 +142,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-[#635ad9]">
+      <section className="py-16 bg-[#6366F1]">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-extrabold text-white mb-4">
             Ready to Shop Fresh?
@@ -150,7 +150,7 @@ export default function AboutPage() {
           <p className="text-white/80 mb-6">
             Join thousands of happy customers enjoying fresh groceries delivered daily.
           </p>
-          <Button asChild size="lg" className="bg-white text-[#635ad9] hover:bg-gray-50 font-semibold">
+          <Button asChild size="lg" className="bg-white text-[#6366F1] hover:bg-gray-50 font-semibold">
             <Link href="/shop">Start Shopping <ArrowRight className="w-4 h-4 ml-2" /></Link>
           </Button>
         </div>

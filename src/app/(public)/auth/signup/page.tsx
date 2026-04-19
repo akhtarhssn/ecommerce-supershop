@@ -51,7 +51,7 @@ export default function SignupPage() {
     : null;
 
   return (
-    <div className="min-h-screen bg-[#f8f8fd] flex">
+    <div className="min-h-screen bg-[#F9FAFB] flex">
       {/* Left panel */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#4baf4f] to-[#16a34a] items-center justify-center p-12 relative overflow-hidden">
         <div className="relative z-10 text-center text-white">
@@ -84,18 +84,18 @@ export default function SignupPage() {
       <div className="flex-1 flex items-center justify-center p-6 overflow-y-auto">
         <div className="w-full max-w-md py-6">
           <div className="lg:hidden flex items-center gap-2 mb-6">
-            <div className="w-9 h-9 rounded-xl bg-[#635ad9] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-[#6366F1] flex items-center justify-center">
               <span className="text-white font-bold">N</span>
             </div>
             <span className="text-xl font-bold text-gray-900">
-              Super<span className="text-[#635ad9]">pal</span>
+              Super<span className="text-[#6366F1]">pal</span>
             </span>
           </div>
 
           <h1 className="text-2xl font-extrabold text-gray-900 mb-1">Create Account</h1>
           <p className="text-gray-500 text-sm mb-6">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-[#635ad9] font-semibold hover:underline">
+            <Link href="/auth/login" className="text-[#6366F1] font-semibold hover:underline">
               Sign in
             </Link>
           </p>
@@ -107,7 +107,7 @@ export default function SignupPage() {
                 <Input
                   {...register("firstName", { required: "Required" })}
                   placeholder="John"
-                  className={cn("border-[#e8e8f0] h-11", errors.firstName && "border-red-400")}
+                  className={cn("border-[#D1D5DB] h-11", errors.firstName && "border-red-400")}
                 />
                 {errors.firstName && <p className="text-xs text-red-500">{errors.firstName.message}</p>}
               </div>
@@ -116,7 +116,7 @@ export default function SignupPage() {
                 <Input
                   {...register("lastName", { required: "Required" })}
                   placeholder="Doe"
-                  className={cn("border-[#e8e8f0] h-11", errors.lastName && "border-red-400")}
+                  className={cn("border-[#D1D5DB] h-11", errors.lastName && "border-red-400")}
                 />
                 {errors.lastName && <p className="text-xs text-red-500">{errors.lastName.message}</p>}
               </div>
@@ -128,7 +128,7 @@ export default function SignupPage() {
                 type="email"
                 {...register("email", { required: "Email required" })}
                 placeholder="you@example.com"
-                className={cn("border-[#e8e8f0] h-11", errors.email && "border-red-400")}
+                className={cn("border-[#D1D5DB] h-11", errors.email && "border-red-400")}
               />
               {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
             </div>
@@ -140,7 +140,7 @@ export default function SignupPage() {
                   type={showPass ? "text" : "password"}
                   {...register("password", { required: "Password required", minLength: { value: 6, message: "Min 6 characters" } })}
                   placeholder="Create a strong password"
-                  className={cn("border-[#e8e8f0] h-11 pr-10", errors.password && "border-red-400")}
+                  className={cn("border-[#D1D5DB] h-11 pr-10", errors.password && "border-red-400")}
                 />
                 <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
                   {showPass ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
@@ -169,24 +169,24 @@ export default function SignupPage() {
                 type="password"
                 {...register("confirmPassword", { required: "Please confirm password" })}
                 placeholder="Repeat your password"
-                className={cn("border-[#e8e8f0] h-11", errors.confirmPassword && "border-red-400")}
+                className={cn("border-[#D1D5DB] h-11", errors.confirmPassword && "border-red-400")}
               />
             </div>
 
             <div className="flex items-start gap-2">
-              <Checkbox id="terms" {...register("terms")} className="mt-0.5 border-[#e8e8f0] data-[state=checked]:bg-[#635ad9] data-[state=checked]:border-[#635ad9]" />
+              <Checkbox id="terms" {...register("terms")} className="mt-0.5 border-[#D1D5DB] data-[state=checked]:bg-[#6366F1] data-[state=checked]:border-[#6366F1]" />
               <Label htmlFor="terms" className="text-sm text-gray-600 cursor-pointer leading-relaxed">
                 I agree to the{" "}
-                <Link href="#" className="text-[#635ad9] hover:underline">Terms of Service</Link>{" "}
+                <Link href="#" className="text-[#6366F1] hover:underline">Terms of Service</Link>{" "}
                 and{" "}
-                <Link href="#" className="text-[#635ad9] hover:underline">Privacy Policy</Link>
+                <Link href="#" className="text-[#6366F1] hover:underline">Privacy Policy</Link>
               </Label>
             </div>
 
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-11 bg-[#635ad9] hover:bg-[#4f46e5] font-semibold shadow-lg shadow-[#635ad9]/25"
+              className="w-full h-11 bg-[#6366F1] hover:bg-[#4F46E5] font-semibold shadow-lg shadow-[#6366F1]/25"
             >
               {loading ? (
                 <span className="flex items-center gap-2">
@@ -203,18 +203,18 @@ export default function SignupPage() {
           </form>
 
           <div className="relative my-5">
-            <Separator className="bg-[#e8e8f0]" />
-            <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#f8f8fd] px-3 text-xs text-gray-400">
+            <Separator className="bg-[#D1D5DB]" />
+            <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F9FAFB] px-3 text-xs text-gray-400">
               or sign up with
             </span>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-11 border-[#e8e8f0] gap-2 font-medium">
+            <Button variant="outline" className="h-11 border-[#D1D5DB] gap-2 font-medium">
               <img src="https://www.svgrepo.com/show/475656/google-color.svg" className="w-4 h-4" alt="Google" />
               Google
             </Button>
-            <Button variant="outline" className="h-11 border-[#e8e8f0] gap-2 font-medium">
+            <Button variant="outline" className="h-11 border-[#D1D5DB] gap-2 font-medium">
               <img src="https://www.svgrepo.com/show/448224/facebook.svg" className="w-4 h-4" alt="Facebook" />
               Facebook
             </Button>

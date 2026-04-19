@@ -44,11 +44,11 @@ export default function CustomersPage() {
       {/* Summary cards */}
       <div className="grid grid-cols-3 gap-4">
         {[
-          { label: "Total", value: customers.length, color: "text-[#635ad9]" },
+          { label: "Total", value: customers.length, color: "text-[#6366F1]" },
           { label: "Active", value: customers.filter((c) => c.status === "active").length, color: "text-[#4baf4f]" },
           { label: "Avg. Spent", value: formatPrice(customers.reduce((s, c) => s + c.totalSpent, 0) / customers.length), color: "text-[#fbb400]" },
         ].map((stat) => (
-          <div key={stat.label} className="bg-white rounded-xl border border-[#e8e8f0] p-4 text-center">
+          <div key={stat.label} className="bg-white rounded-xl border border-[#D1D5DB] p-4 text-center">
             <p className={cn("text-2xl font-extrabold", stat.color)}>{stat.value}</p>
             <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
           </div>
@@ -62,16 +62,16 @@ export default function CustomersPage() {
           placeholder="Search customers..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="pl-8 h-9 text-sm border-[#e8e8f0]"
+          className="pl-8 h-9 text-sm border-[#D1D5DB]"
         />
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl border border-[#e8e8f0] overflow-hidden">
+      <div className="bg-white rounded-2xl border border-[#D1D5DB] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-[#e8e8f0] bg-[#f8f8fd]">
+              <tr className="border-b border-[#D1D5DB] bg-[#F9FAFB]">
                 {["Customer", "Contact", "Orders", "Total Spent", "Joined", "Status", ""].map((h) => (
                   <th key={h} className="text-left py-3.5 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                     {h}
@@ -79,9 +79,9 @@ export default function CustomersPage() {
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#f0f0f8]">
+            <tbody className="divide-y divide-[#E5E7EB]">
               {filtered.map((customer) => (
-                <tr key={customer.id} className="hover:bg-[#f8f8fd] transition-colors">
+                <tr key={customer.id} className="hover:bg-[#F9FAFB] transition-colors">
                   <td className="py-3.5 px-4">
                     <div className="flex items-center gap-3">
                       <Avatar className="w-9 h-9">
@@ -109,7 +109,7 @@ export default function CustomersPage() {
                     </span>
                   </td>
                   <td className="py-3.5 px-4">
-                    <span className="font-bold text-[#635ad9] text-sm">
+                    <span className="font-bold text-[#6366F1] text-sm">
                       {formatPrice(customer.totalSpent)}
                     </span>
                   </td>

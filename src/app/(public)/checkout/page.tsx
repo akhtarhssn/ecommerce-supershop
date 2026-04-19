@@ -74,8 +74,8 @@ export default function CheckoutPage() {
 
   if (step === "success") {
     return (
-      <div className="min-h-screen bg-[#f8f8fd] flex items-center justify-center p-4">
-        <div className="max-w-md w-full text-center bg-white rounded-3xl border border-[#e8e8f0] p-10">
+      <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center p-4">
+        <div className="max-w-md w-full text-center bg-white rounded-3xl border border-[#D1D5DB] p-10">
           <div className="w-20 h-20 rounded-full bg-green-50 flex items-center justify-center mx-auto mb-5">
             <CheckCircle2 className="w-10 h-10 text-[#4baf4f]" />
           </div>
@@ -85,18 +85,18 @@ export default function CheckoutPage() {
           <p className="text-gray-500 mb-1">
             Thank you for your order. We'll send you a confirmation email shortly.
           </p>
-          <p className="text-[#635ad9] font-mono font-bold mb-6">
+          <p className="text-[#6366F1] font-mono font-bold mb-6">
             Order #ORD-{Date.now().toString().slice(-6)}
           </p>
           <div className="flex gap-3">
             <Button
               asChild
               variant="outline"
-              className="flex-1 border-[#635ad9] text-[#635ad9]"
+              className="flex-1 border-[#6366F1] text-[#6366F1]"
             >
               <Link href="/account/orders">View Orders</Link>
             </Button>
-            <Button asChild className="flex-1 bg-[#635ad9] hover:bg-[#4f46e5]">
+            <Button asChild className="flex-1 bg-[#6366F1] hover:bg-[#4F46E5]">
               <Link href="/shop">Continue Shopping</Link>
             </Button>
           </div>
@@ -107,10 +107,10 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-[#f8f8fd] flex items-center justify-center">
+      <div className="min-h-screen bg-[#F9FAFB] flex items-center justify-center">
         <div className="text-center">
           <p className="text-gray-500 mb-4">No items in cart</p>
-          <Button asChild className="bg-[#635ad9] hover:bg-[#4f46e5]">
+          <Button asChild className="bg-[#6366F1] hover:bg-[#4F46E5]">
             <Link href="/shop">Start Shopping</Link>
           </Button>
         </div>
@@ -119,16 +119,16 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#f8f8fd]">
-      <div className="bg-white border-b border-[#e8e8f0] py-5">
+    <div className="min-h-screen bg-[#F9FAFB]">
+      <div className="bg-white border-b border-[#D1D5DB] py-5">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-            <Link href="/cart" className="hover:text-[#635ad9]">Cart</Link>
+            <Link href="/cart" className="hover:text-[#6366F1]">Cart</Link>
             <ChevronRight className="w-3 h-3" />
             <span className="text-gray-900 font-medium">Checkout</span>
           </div>
           <h1 className="text-2xl font-bold text-gray-900">
-            Secure <span className="text-[#635ad9]">Checkout</span>
+            Secure <span className="text-[#6366F1]">Checkout</span>
           </h1>
         </div>
       </div>
@@ -138,9 +138,9 @@ export default function CheckoutPage() {
           {/* Left: Form */}
           <div className="lg:col-span-2 space-y-6">
             {/* Shipping info */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
               <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="w-7 h-7 rounded-full bg-[#635ad9] text-white text-sm flex items-center justify-center font-bold">
+                <span className="w-7 h-7 rounded-full bg-[#6366F1] text-white text-sm flex items-center justify-center font-bold">
                   1
                 </span>
                 Shipping Information
@@ -155,7 +155,7 @@ export default function CheckoutPage() {
                     {...register("firstName")}
                     placeholder="John"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.firstName && "border-red-400"
                     )}
                   />
@@ -174,7 +174,7 @@ export default function CheckoutPage() {
                     {...register("lastName")}
                     placeholder="Doe"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.lastName && "border-red-400"
                     )}
                   />
@@ -194,7 +194,7 @@ export default function CheckoutPage() {
                     {...register("email")}
                     placeholder="john@example.com"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.email && "border-red-400"
                     )}
                   />
@@ -213,7 +213,7 @@ export default function CheckoutPage() {
                     {...register("phone")}
                     placeholder="+1 234 567 8900"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.phone && "border-red-400"
                     )}
                   />
@@ -232,7 +232,7 @@ export default function CheckoutPage() {
                     {...register("address")}
                     placeholder="123 Main Street, Apt 4B"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.address && "border-red-400"
                     )}
                   />
@@ -251,7 +251,7 @@ export default function CheckoutPage() {
                     {...register("city")}
                     placeholder="New York"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.city && "border-red-400"
                     )}
                   />
@@ -265,7 +265,7 @@ export default function CheckoutPage() {
                     {...register("state")}
                     placeholder="NY"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.state && "border-red-400"
                     )}
                   />
@@ -279,7 +279,7 @@ export default function CheckoutPage() {
                     {...register("zipCode")}
                     placeholder="10001"
                     className={cn(
-                      "border-[#e8e8f0]",
+                      "border-[#D1D5DB]",
                       errors.zipCode && "border-red-400"
                     )}
                   />
@@ -293,16 +293,16 @@ export default function CheckoutPage() {
                     {...register("country")}
                     placeholder="United States"
                     defaultValue="United States"
-                    className="border-[#e8e8f0]"
+                    className="border-[#D1D5DB]"
                   />
                 </div>
               </div>
             </div>
 
             {/* Payment */}
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
               <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
-                <span className="w-7 h-7 rounded-full bg-[#635ad9] text-white text-sm flex items-center justify-center font-bold">
+                <span className="w-7 h-7 rounded-full bg-[#6366F1] text-white text-sm flex items-center justify-center font-bold">
                   2
                 </span>
                 Payment Method
@@ -318,13 +318,13 @@ export default function CheckoutPage() {
                     className={cn(
                       "flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all",
                       paymentMethod === method.id
-                        ? "border-[#635ad9] bg-[#f5f3ff]"
-                        : "border-[#e8e8f0] hover:border-[#635ad9]/50"
+                        ? "border-[#6366F1] bg-[#EEF2FF]"
+                        : "border-[#D1D5DB] hover:border-[#6366F1]/50"
                     )}
                     onClick={() => setPaymentMethod(method.id)}
                   >
-                    <RadioGroupItem value={method.id} id={method.id} className="border-[#635ad9] text-[#635ad9]" />
-                    <method.icon className="w-5 h-5 text-[#635ad9]" />
+                    <RadioGroupItem value={method.id} id={method.id} className="border-[#6366F1] text-[#6366F1]" />
+                    <method.icon className="w-5 h-5 text-[#6366F1]" />
                     <Label htmlFor={method.id} className="cursor-pointer font-medium">
                       {method.label}
                     </Label>
@@ -333,18 +333,18 @@ export default function CheckoutPage() {
               </RadioGroup>
 
               {paymentMethod === "card" && (
-                <div className="mt-4 space-y-3 p-4 bg-[#f8f8fd] rounded-xl">
-                  <Input placeholder="Card Number" className="border-[#e8e8f0]" />
+                <div className="mt-4 space-y-3 p-4 bg-[#F9FAFB] rounded-xl">
+                  <Input placeholder="Card Number" className="border-[#D1D5DB]" />
                   <div className="grid grid-cols-2 gap-3">
-                    <Input placeholder="MM / YY" className="border-[#e8e8f0]" />
-                    <Input placeholder="CVC" className="border-[#e8e8f0]" />
+                    <Input placeholder="MM / YY" className="border-[#D1D5DB]" />
+                    <Input placeholder="CVC" className="border-[#D1D5DB]" />
                   </div>
-                  <Input placeholder="Cardholder Name" className="border-[#e8e8f0]" />
+                  <Input placeholder="Cardholder Name" className="border-[#D1D5DB]" />
                 </div>
               )}
 
-              <div className="flex items-center gap-2 mt-4 p-3 bg-[#f8f8fd] rounded-xl">
-                <Lock className="w-4 h-4 text-[#635ad9]" />
+              <div className="flex items-center gap-2 mt-4 p-3 bg-[#F9FAFB] rounded-xl">
+                <Lock className="w-4 h-4 text-[#6366F1]" />
                 <p className="text-xs text-gray-500">
                   Your payment information is encrypted and secure.
                 </p>
@@ -354,13 +354,13 @@ export default function CheckoutPage() {
 
           {/* Right: Summary */}
           <div>
-            <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5 sticky top-24">
+            <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5 sticky top-40">
               <h2 className="font-bold text-gray-900 mb-4">Order Summary</h2>
 
               <div className="space-y-3 max-h-48 overflow-y-auto mb-4">
                 {items.map(({ product, quantity }) => (
                   <div key={product.id} className="flex gap-3 items-center">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-[#f8f8fd] shrink-0">
+                    <div className="w-12 h-12 rounded-lg overflow-hidden bg-[#F9FAFB] shrink-0">
                       <img
                         src={product.image}
                         alt={product.name}
@@ -382,7 +382,7 @@ export default function CheckoutPage() {
                 ))}
               </div>
 
-              <Separator className="bg-[#e8e8f0] mb-4" />
+              <Separator className="bg-[#D1D5DB] mb-4" />
 
               <div className="space-y-2.5 text-sm">
                 <div className="flex justify-between">
@@ -399,17 +399,17 @@ export default function CheckoutPage() {
                   <span className="text-gray-600">Tax (10%)</span>
                   <span>{formatPrice(tax)}</span>
                 </div>
-                <Separator className="bg-[#e8e8f0]" />
+                <Separator className="bg-[#D1D5DB]" />
                 <div className="flex justify-between font-bold text-base">
                   <span>Total</span>
-                  <span className="text-[#635ad9]">{formatPrice(total)}</span>
+                  <span className="text-[#6366F1]">{formatPrice(total)}</span>
                 </div>
               </div>
 
               <Button
                 type="submit"
                 disabled={isProcessing}
-                className="w-full mt-5 bg-[#635ad9] hover:bg-[#4f46e5] h-12 text-base font-semibold shadow-lg shadow-[#635ad9]/25"
+                className="w-full mt-5 bg-[#6366F1] hover:bg-[#4F46E5] h-12 text-base font-semibold shadow-lg shadow-[#6366F1]/25"
               >
                 {isProcessing ? (
                   <span className="flex items-center gap-2">

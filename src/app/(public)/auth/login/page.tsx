@@ -27,9 +27,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f8fd] flex">
+    <div className="min-h-screen bg-[#F9FAFB] flex">
       {/* Left panel */}
-      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#635ad9] to-[#4f46e5] items-center justify-center p-12 relative overflow-hidden">
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-[#6366F1] to-[#4F46E5] items-center justify-center p-12 relative overflow-hidden">
         <div className="absolute inset-0 opacity-20">
           {Array.from({ length: 20 }).map((_, i) => (
             <div
@@ -71,18 +71,18 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center p-6">
         <div className="w-full max-w-md">
           <div className="lg:hidden flex items-center gap-2 mb-8">
-            <div className="w-9 h-9 rounded-xl bg-[#635ad9] flex items-center justify-center">
+            <div className="w-9 h-9 rounded-xl bg-[#6366F1] flex items-center justify-center">
               <span className="text-white font-bold">N</span>
             </div>
             <span className="text-xl font-bold text-gray-900">
-              Super<span className="text-[#635ad9]">pal</span>
+              Super<span className="text-[#6366F1]">pal</span>
             </span>
           </div>
 
           <h1 className="text-2xl font-extrabold text-gray-900 mb-1">Sign In</h1>
           <p className="text-gray-500 text-sm mb-7">
             Don't have an account?{" "}
-            <Link href="/auth/signup" className="text-[#635ad9] font-semibold hover:underline">
+            <Link href="/auth/signup" className="text-[#6366F1] font-semibold hover:underline">
               Create one
             </Link>
           </p>
@@ -95,7 +95,7 @@ export default function LoginPage() {
                 type="email"
                 {...register("email", { required: "Email is required" })}
                 placeholder="you@example.com"
-                className={cn("border-[#e8e8f0] h-11", errors.email && "border-red-400")}
+                className={cn("border-[#D1D5DB] h-11", errors.email && "border-red-400")}
               />
               {errors.email && <p className="text-xs text-red-500">{errors.email.message}</p>}
             </div>
@@ -103,7 +103,7 @@ export default function LoginPage() {
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <Label htmlFor="password" className="text-sm font-medium">Password</Label>
-                <Link href="#" className="text-xs text-[#635ad9] hover:underline">Forgot password?</Link>
+                <Link href="#" className="text-xs text-[#6366F1] hover:underline">Forgot password?</Link>
               </div>
               <div className="relative">
                 <Input
@@ -111,7 +111,7 @@ export default function LoginPage() {
                   type={showPass ? "text" : "password"}
                   {...register("password", { required: "Password is required" })}
                   placeholder="••••••••"
-                  className={cn("border-[#e8e8f0] h-11 pr-10", errors.password && "border-red-400")}
+                  className={cn("border-[#D1D5DB] h-11 pr-10", errors.password && "border-red-400")}
                 />
                 <button
                   type="button"
@@ -127,7 +127,7 @@ export default function LoginPage() {
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-11 bg-[#635ad9] hover:bg-[#4f46e5] font-semibold shadow-lg shadow-[#635ad9]/25"
+              className="w-full h-11 bg-[#6366F1] hover:bg-[#4F46E5] font-semibold shadow-lg shadow-[#6366F1]/25"
             >
               {loading ? (
                 <span className="flex items-center gap-2">
@@ -144,18 +144,18 @@ export default function LoginPage() {
           </form>
 
           <div className="relative my-6">
-            <Separator className="bg-[#e8e8f0]" />
-            <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#f8f8fd] px-3 text-xs text-gray-400">
+            <Separator className="bg-[#D1D5DB]" />
+            <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#F9FAFB] px-3 text-xs text-gray-400">
               or continue with
             </span>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <Button variant="outline" className="h-11 border-[#e8e8f0] gap-2 font-medium">
+            <Button variant="outline" className="h-11 border-[#D1D5DB] gap-2 font-medium">
               <img src="https://www.svgrepo.com/show/475656/google-color.svg" className="w-4 h-4" alt="Google" />
               Google
             </Button>
-            <Button variant="outline" className="h-11 border-[#e8e8f0] gap-2 font-medium">
+            <Button variant="outline" className="h-11 border-[#D1D5DB] gap-2 font-medium">
               <img src="https://www.svgrepo.com/show/448224/facebook.svg" className="w-4 h-4" alt="Facebook" />
               Facebook
             </Button>

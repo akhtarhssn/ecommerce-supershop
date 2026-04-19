@@ -28,7 +28,7 @@ export default function SettingsPage() {
       </div>
 
       <Tabs defaultValue="profile" className="space-y-5">
-        <TabsList className="bg-white border border-[#e8e8f0] h-11 p-1 rounded-xl">
+        <TabsList className="bg-white border border-[#D1D5DB] h-11 p-1 rounded-xl">
           {[
             { value: "profile", label: "Profile", icon: User },
             { value: "store", label: "Store", icon: Store },
@@ -38,7 +38,7 @@ export default function SettingsPage() {
             <TabsTrigger
               key={tab.value}
               value={tab.value}
-              className="text-xs gap-1.5 rounded-lg data-[state=active]:bg-[#635ad9] data-[state=active]:text-white"
+              className="text-xs gap-1.5 rounded-lg data-[state=active]:bg-[#6366F1] data-[state=active]:text-white"
             >
               <tab.icon className="w-3.5 h-3.5" />
               {tab.label}
@@ -48,14 +48,14 @@ export default function SettingsPage() {
 
         {/* Profile */}
         <TabsContent value="profile">
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6 space-y-6">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6 space-y-6">
             <h3 className="font-bold text-gray-900">Profile Information</h3>
             <div className="flex items-center gap-5">
               <Avatar className="w-16 h-16">
                 <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=admin" />
                 <AvatarFallback>AD</AvatarFallback>
               </Avatar>
-              <Button variant="outline" size="sm" className="border-[#635ad9] text-[#635ad9]">
+              <Button variant="outline" size="sm" className="border-[#6366F1] text-[#6366F1]">
                 Change Photo
               </Button>
             </div>
@@ -68,11 +68,11 @@ export default function SettingsPage() {
               ].map((field) => (
                 <div key={field.id} className="space-y-1.5">
                   <Label className="text-sm font-medium">{field.label}</Label>
-                  <Input defaultValue={field.defaultValue} type={field.type || "text"} className="border-[#e8e8f0]" />
+                  <Input defaultValue={field.defaultValue} type={field.type || "text"} className="border-[#D1D5DB]" />
                 </div>
               ))}
             </div>
-            <Button onClick={handleSave} disabled={saving} className="bg-[#635ad9] hover:bg-[#4f46e5]">
+            <Button onClick={handleSave} disabled={saving} className="bg-[#6366F1] hover:bg-[#4F46E5]">
               {saving ? "Saving..." : "Save Changes"}
             </Button>
           </div>
@@ -80,7 +80,7 @@ export default function SettingsPage() {
 
         {/* Store */}
         <TabsContent value="store">
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6 space-y-6">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6 space-y-6">
             <h3 className="font-bold text-gray-900">Store Settings</h3>
             <div className="space-y-4">
               {[
@@ -91,23 +91,23 @@ export default function SettingsPage() {
               ].map((field) => (
                 <div key={field.id} className="space-y-1.5">
                   <Label className="text-sm font-medium">{field.label}</Label>
-                  <Input defaultValue={field.defaultValue} className="border-[#e8e8f0]" />
+                  <Input defaultValue={field.defaultValue} className="border-[#D1D5DB]" />
                 </div>
               ))}
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Currency</Label>
-                <Input defaultValue="USD ($)" className="border-[#e8e8f0]" />
+                <Input defaultValue="USD ($)" className="border-[#D1D5DB]" />
               </div>
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Tax Rate (%)</Label>
-                <Input type="number" defaultValue="10" className="border-[#e8e8f0]" />
+                <Input type="number" defaultValue="10" className="border-[#D1D5DB]" />
               </div>
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Free Shipping Threshold ($)</Label>
-                <Input type="number" defaultValue="50" className="border-[#e8e8f0]" />
+                <Input type="number" defaultValue="50" className="border-[#D1D5DB]" />
               </div>
             </div>
-            <Button onClick={handleSave} disabled={saving} className="bg-[#635ad9] hover:bg-[#4f46e5]">
+            <Button onClick={handleSave} disabled={saving} className="bg-[#6366F1] hover:bg-[#4F46E5]">
               {saving ? "Saving..." : "Save Store Settings"}
             </Button>
           </div>
@@ -115,7 +115,7 @@ export default function SettingsPage() {
 
         {/* Notifications */}
         <TabsContent value="notifications">
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6 space-y-5">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6 space-y-5">
             <h3 className="font-bold text-gray-900">Notification Preferences</h3>
             <div className="space-y-4">
               {[
@@ -126,12 +126,12 @@ export default function SettingsPage() {
                 { label: "Weekly Reports", desc: "Receive weekly performance reports via email" },
                 { label: "Marketing Emails", desc: "Receive tips and marketing recommendations" },
               ].map((notif) => (
-                <div key={notif.label} className="flex items-start justify-between gap-4 py-3 border-b border-[#f0f0f8] last:border-0">
+                <div key={notif.label} className="flex items-start justify-between gap-4 py-3 border-b border-[#E5E7EB] last:border-0">
                   <div>
                     <p className="text-sm font-medium text-gray-900">{notif.label}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{notif.desc}</p>
                   </div>
-                  <div className="w-10 h-5 bg-[#635ad9] rounded-full relative cursor-pointer shrink-0 mt-0.5">
+                  <div className="w-10 h-5 bg-[#6366F1] rounded-full relative cursor-pointer shrink-0 mt-0.5">
                     <div className="absolute right-0.5 top-0.5 w-4 h-4 bg-white rounded-full" />
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export default function SettingsPage() {
 
         {/* Security */}
         <TabsContent value="security">
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6 space-y-6">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6 space-y-6">
             <h3 className="font-bold text-gray-900">Security Settings</h3>
             <div className="space-y-4 max-w-sm">
               <h4 className="font-semibold text-gray-700 text-sm">Change Password</h4>
@@ -153,27 +153,27 @@ export default function SettingsPage() {
               ].map((field) => (
                 <div key={field.id} className="space-y-1.5">
                   <Label className="text-sm font-medium">{field.label}</Label>
-                  <Input type="password" placeholder="••••••••" className="border-[#e8e8f0]" />
+                  <Input type="password" placeholder="••••••••" className="border-[#D1D5DB]" />
                 </div>
               ))}
-              <Button onClick={() => toast.success("Password updated!")} className="bg-[#635ad9] hover:bg-[#4f46e5]">
+              <Button onClick={() => toast.success("Password updated!")} className="bg-[#6366F1] hover:bg-[#4F46E5]">
                 Update Password
               </Button>
             </div>
 
-            <Separator className="bg-[#e8e8f0]" />
+            <Separator className="bg-[#D1D5DB]" />
 
             <div>
               <h4 className="font-semibold text-gray-700 text-sm mb-3">Two-Factor Authentication</h4>
               <p className="text-sm text-gray-500 mb-3">
                 Add an extra layer of security to your account.
               </p>
-              <Button variant="outline" className="border-[#635ad9] text-[#635ad9]">
+              <Button variant="outline" className="border-[#6366F1] text-[#6366F1]">
                 Enable 2FA
               </Button>
             </div>
 
-            <Separator className="bg-[#e8e8f0]" />
+            <Separator className="bg-[#D1D5DB]" />
 
             <div>
               <h4 className="font-semibold text-red-500 text-sm mb-3">Danger Zone</h4>

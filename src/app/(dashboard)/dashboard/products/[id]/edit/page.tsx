@@ -51,26 +51,26 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
 
       <div className="grid lg:grid-cols-3 gap-5">
         <div className="lg:col-span-2 space-y-5">
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
             <h3 className="font-bold text-gray-900 mb-5">Basic Information</h3>
             <div className="space-y-4">
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Product Name</Label>
-                <Input defaultValue={product.name} className="border-[#e8e8f0]" />
+                <Input defaultValue={product.name} className="border-[#D1D5DB]" />
               </div>
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Description</Label>
                 <textarea
                   defaultValue={product.description}
                   rows={4}
-                  className="w-full rounded-lg border border-[#e8e8f0] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#635ad9]/20 focus:border-[#635ad9] resize-none"
+                  className="w-full rounded-lg border border-[#D1D5DB] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6366F1]/20 focus:border-[#6366F1] resize-none"
                 />
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <Label className="text-sm font-medium">Category</Label>
                   <Select defaultValue={product.category}>
-                    <SelectTrigger className="border-[#e8e8f0]">
+                    <SelectTrigger className="border-[#D1D5DB]">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -80,52 +80,52 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
                 </div>
                 <div className="space-y-1.5">
                   <Label className="text-sm font-medium">Brand</Label>
-                  <Input defaultValue={product.brand} className="border-[#e8e8f0]" />
+                  <Input defaultValue={product.brand} className="border-[#D1D5DB]" />
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
             <h3 className="font-bold text-gray-900 mb-5">Pricing & Inventory</h3>
             <div className="grid sm:grid-cols-3 gap-4">
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Price ($)</Label>
-                <Input type="number" step="0.01" defaultValue={product.price} className="border-[#e8e8f0]" />
+                <Input type="number" step="0.01" defaultValue={product.price} className="border-[#D1D5DB]" />
               </div>
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Original Price ($)</Label>
-                <Input type="number" step="0.01" defaultValue={product.originalPrice} className="border-[#e8e8f0]" />
+                <Input type="number" step="0.01" defaultValue={product.originalPrice} className="border-[#D1D5DB]" />
               </div>
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Stock</Label>
-                <Input type="number" defaultValue={product.stock} className="border-[#e8e8f0]" />
+                <Input type="number" defaultValue={product.stock} className="border-[#D1D5DB]" />
               </div>
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Weight</Label>
-                <Input defaultValue={product.weight} className="border-[#e8e8f0]" />
+                <Input defaultValue={product.weight} className="border-[#D1D5DB]" />
               </div>
               <div className="space-y-1.5">
                 <Label className="text-sm font-medium">Unit</Label>
-                <Input defaultValue={product.unit} className="border-[#e8e8f0]" />
+                <Input defaultValue={product.unit} className="border-[#D1D5DB]" />
               </div>
             </div>
           </div>
         </div>
 
         <div className="space-y-5">
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
             <h3 className="font-bold text-gray-900 mb-4">Product Image</h3>
-            <div className="mb-3 rounded-xl overflow-hidden aspect-square bg-[#f8f8fd]">
+            <div className="mb-3 rounded-xl overflow-hidden aspect-square bg-[#F9FAFB]">
               <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
             </div>
-            <div className="border-2 border-dashed border-[#e8e8f0] rounded-xl p-4 text-center cursor-pointer hover:border-[#635ad9] transition-colors">
+            <div className="border-2 border-dashed border-[#D1D5DB] rounded-xl p-4 text-center cursor-pointer hover:border-[#6366F1] transition-colors">
               <Upload className="w-5 h-5 text-gray-300 mx-auto mb-1" />
               <p className="text-xs text-gray-500">Click to replace image</p>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
             <h3 className="font-bold text-gray-900 mb-4">Product Options</h3>
             <div className="space-y-3">
               {[
@@ -138,7 +138,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
                   <Checkbox
                     id={opt.id}
                     defaultChecked={opt.checked}
-                    className="border-[#e8e8f0] data-[state=checked]:bg-[#635ad9] data-[state=checked]:border-[#635ad9]"
+                    className="border-[#D1D5DB] data-[state=checked]:bg-[#6366F1] data-[state=checked]:border-[#6366F1]"
                   />
                   <Label htmlFor={opt.id} className="text-sm text-gray-600 cursor-pointer">
                     {opt.label}
@@ -152,11 +152,11 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
             <Button
               onClick={handleSave}
               disabled={saving}
-              className="w-full bg-[#635ad9] hover:bg-[#4f46e5] h-11 font-semibold"
+              className="w-full bg-[#6366F1] hover:bg-[#4F46E5] h-11 font-semibold"
             >
               {saving ? "Saving..." : "Update Product"}
             </Button>
-            <Button asChild variant="outline" className="w-full border-[#e8e8f0]">
+            <Button asChild variant="outline" className="w-full border-[#D1D5DB]">
               <Link href="/dashboard/products">Cancel</Link>
             </Button>
           </div>

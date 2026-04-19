@@ -42,7 +42,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300">
       {/* Newsletter section */}
-      <div className="bg-[#635ad9]">
+      <div className="bg-[#6366F1]">
         <div className="max-w-7xl mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
             <h3 className="text-xl font-bold text-white">
@@ -72,11 +72,11 @@ export default function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-xl bg-[#635ad9] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-xl bg-[#6366F1] flex items-center justify-center">
                 <span className="text-white font-bold text-lg">SS</span>
               </div>
               <span className="text-xl font-bold text-white">
-                Super<span className="text-[#635ad9]">shop</span>
+                Super<span className="text-[#6366F1]">shop</span>
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed mb-6 max-w-xs">
@@ -85,15 +85,15 @@ export default function Footer() {
             </p>
             <div className="space-y-2.5 text-sm">
               <div className="flex items-center gap-2.5 text-gray-400">
-                <MapPin className="w-4 h-4 text-[#635ad9] shrink-0" />
+                <MapPin className="w-4 h-4 text-[#6366F1] shrink-0" />
                 123 Green Market St, New York, NY 10001
               </div>
               <div className="flex items-center gap-2.5 text-gray-400">
-                <Phone className="w-4 h-4 text-[#635ad9] shrink-0" />
+                <Phone className="w-4 h-4 text-[#6366F1] shrink-0" />
                 +1 800 123 4567
               </div>
               <div className="flex items-center gap-2.5 text-gray-400">
-                <Mail className="w-4 h-4 text-[#635ad9] shrink-0" />
+                <Mail className="w-4 h-4 text-[#6366F1] shrink-0" />
                 hello@supershop.com
               </div>
             </div>
@@ -107,7 +107,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-[#635ad9] transition-colors flex items-center gap-1 group"
+                    className="text-sm text-gray-400 hover:text-[#6366F1] transition-colors flex items-center gap-1 group"
                   >
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
@@ -125,7 +125,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-[#635ad9] transition-colors flex items-center gap-1 group"
+                    className="text-sm text-gray-400 hover:text-[#6366F1] transition-colors flex items-center gap-1 group"
                   >
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
@@ -143,7 +143,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-[#635ad9] transition-colors flex items-center gap-1 group"
+                    className="text-sm text-gray-400 hover:text-[#6366F1] transition-colors flex items-center gap-1 group"
                   >
                     <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
@@ -173,7 +173,7 @@ export default function Footer() {
               key={label}
               href={href}
               aria-label={label}
-              className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-[#635ad9] hover:text-white transition-colors"
+              className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-[#6366F1] hover:text-white transition-colors"
             >
               <Icon className="w-3.5 h-3.5" />
             </a>

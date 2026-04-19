@@ -22,7 +22,7 @@ export default function SectionHeading({
   return (
     <div className={cn(centered && "text-center", className)}>
       {badge && (
-        <span className="inline-block text-xs font-semibold text-[#635ad9] bg-[#f5f3ff] px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
+        <span className="inline-block text-xs font-semibold text-[#6366F1] bg-[#EEF2FF] px-3 py-1 rounded-full mb-3 uppercase tracking-wide">
           {badge}
         </span>
       )}
@@ -30,7 +30,7 @@ export default function SectionHeading({
         {highlight ? (
           <>
             {parts[0]}
-            <span className="text-[#635ad9]">{highlight}</span>
+            <span className="text-[#6366F1]">{highlight}</span>
             {parts[1]}
           </>
         ) : (

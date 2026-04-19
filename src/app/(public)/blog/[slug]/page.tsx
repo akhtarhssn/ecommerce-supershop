@@ -14,12 +14,12 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
   const related = blogPosts.filter((p) => p.id !== post.id && p.category === post.category).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[#f8f8fd]">
-      <div className="bg-white border-b border-[#e8e8f0] py-3 px-4">
+    <div className="min-h-screen bg-[#F9FAFB]">
+      <div className="bg-white border-b border-[#D1D5DB] py-3 px-4">
         <div className="max-w-4xl mx-auto flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-[#635ad9]">Home</Link>
+          <Link href="/" className="hover:text-[#6366F1]">Home</Link>
           <ChevronRight className="w-3 h-3" />
-          <Link href="/blog" className="hover:text-[#635ad9]">Blog</Link>
+          <Link href="/blog" className="hover:text-[#6366F1]">Blog</Link>
           <ChevronRight className="w-3 h-3" />
           <span className="text-gray-900 font-medium line-clamp-1">{post.title}</span>
         </div>
@@ -28,13 +28,13 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       <article className="max-w-4xl mx-auto px-4 py-10">
         {/* Badge + category */}
         <div className="mb-5">
-          <Badge className="bg-[#f5f3ff] text-[#635ad9] border-0 mb-3">{post.category}</Badge>
+          <Badge className="bg-[#EEF2FF] text-[#6366F1] border-0 mb-3">{post.category}</Badge>
           <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight mb-4">
             {post.title}
           </h1>
           <div className="flex flex-wrap items-center gap-5 text-sm text-gray-500">
             <div className="flex items-center gap-2">
-              <img src={post.authorAvatar} alt={post.author} className="w-8 h-8 rounded-full bg-[#f5f3ff]" />
+              <img src={post.authorAvatar} alt={post.author} className="w-8 h-8 rounded-full bg-[#EEF2FF]" />
               <span>{post.author}</span>
             </div>
             <span className="flex items-center gap-1">
@@ -76,14 +76,14 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
         </div>
 
         {/* Share + Back */}
-        <div className="flex items-center justify-between mt-10 pt-6 border-t border-[#e8e8f0]">
-          <Button asChild variant="outline" className="border-[#635ad9] text-[#635ad9] gap-2">
+        <div className="flex items-center justify-between mt-10 pt-6 border-t border-[#D1D5DB]">
+          <Button asChild variant="outline" className="border-[#6366F1] text-[#6366F1] gap-2">
             <Link href="/blog">
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
             </Link>
           </Button>
-          <button className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#635ad9] transition-colors">
+          <button className="flex items-center gap-2 text-sm text-gray-500 hover:text-[#6366F1] transition-colors">
             <Share2 className="w-4 h-4" />
             Share
           </button>
@@ -93,13 +93,13 @@ export default async function BlogDetailPage({ params }: { params: Promise<{ slu
       {/* Related posts */}
       {related.length > 0 && (
         <section className="max-w-4xl mx-auto px-4 pb-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Related <span className="text-[#635ad9]">Articles</span></h2>
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Related <span className="text-[#6366F1]">Articles</span></h2>
           <div className="grid sm:grid-cols-3 gap-5">
             {related.map((rp) => (
-              <Link key={rp.id} href={`/blog/${rp.slug}`} className="group bg-white rounded-2xl border border-[#e8e8f0] overflow-hidden hover:shadow-md transition-shadow">
+              <Link key={rp.id} href={`/blog/${rp.slug}`} className="group bg-white rounded-2xl border border-[#D1D5DB] overflow-hidden hover:shadow-md transition-shadow">
                 <img src={rp.image} alt={rp.title} className="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300" />
                 <div className="p-4">
-                  <h3 className="font-semibold text-sm text-gray-900 line-clamp-2 group-hover:text-[#635ad9] transition-colors">{rp.title}</h3>
+                  <h3 className="font-semibold text-sm text-gray-900 line-clamp-2 group-hover:text-[#6366F1] transition-colors">{rp.title}</h3>
                   <p className="text-xs text-gray-400 mt-1">{formatDate(rp.publishedAt)}</p>
                 </div>
               </Link>

@@ -51,27 +51,80 @@ export default function ProductDetailPage({
 
   const allImages = product.images.length > 0 ? product.images : [product.image];
 
-  const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) {
-      addItem(product);
+  // Generate dynamic variants based on unit
+  const getVariants = () => {
+    const isWeight = product.unit.toLowerCase() === "kg" || product.unit.toLowerCase() === "g";
+    const isPiece = ["pc", "pcs", "piece", "pieces", "pack", "packs"].includes(product.unit.toLowerCase());
+
+    // Attempt to extract numeric part from weight (e.g., "12 pcs" -> 12)
+    const baseValueMatch = product.weight.match(/(\d+(\.\d+)?)/);
+    const baseValue = baseValueMatch ? parseFloat(baseValueMatch[1]) : 1;
+    const unitLabel = product.weight.replace(/[\d. ]/g, "");
+
+    if (isWeight) {
+      return [
+        { label: "250g", multiplier: 0.25 },
+        { label: "500g", multiplier: 0.5 },
+        { label: "1 kg", multiplier: 1 },
+        { label: "2 kg", multiplier: 2 },
+      ];
     }
-    toast.success(`${quantity}x ${product.name} added to cart!`);
+
+    if (isPiece) {
+      // If base is 12 (like eggs), show halves and multiples
+      if (baseValue > 1) {
+        return [
+          { label: `${Math.round(baseValue * 0.5)} ${unitLabel}`, multiplier: 0.5 },
+          { label: `${baseValue} ${unitLabel}`, multiplier: 1 },
+          { label: `${baseValue * 2} ${unitLabel}`, multiplier: 2 },
+          { label: `${baseValue * 3} ${unitLabel}`, multiplier: 3 },
+        ];
+      }
+      // Single pieces
+      return [
+        { label: `1 ${unitLabel}`, multiplier: 1 },
+        { label: `2 ${unitLabel}`, multiplier: 2 },
+        { label: `6 ${unitLabel}`, multiplier: 6 },
+        { label: `12 ${unitLabel}`, multiplier: 12 },
+      ];
+    }
+
+    // Default for bottles, jars, bags
+    return [
+      { label: `1 ${product.unit}`, multiplier: 1 },
+      { label: `2 ${product.unit}`, multiplier: 2 },
+      { label: `5 ${product.unit}`, multiplier: 5 },
+    ];
   };
 
-  const weights = ["250g", "500g", "1 kg", "2 kg"];
+  const variants = getVariants();
+  const currentVariant = variants.find(v => v.label === selectedWeight) || variants[0];
+  const weightMultiplier = currentVariant.multiplier;
+
+  const currentPrice = product.price * weightMultiplier * quantity;
+  const currentOriginalPrice = product.originalPrice * weightMultiplier * quantity;
+
+  const handleAddToCart = () => {
+    addItem({
+      ...product,
+      price: product.price * weightMultiplier,
+      weight: selectedWeight,
+    }, quantity);
+    toast.success(`${quantity}x ${product.name} (${selectedWeight}) added to cart!`);
+  };
 
   return (
-    <div className="min-h-screen bg-[#f8f8fd]">
+    <div className="min-h-screen bg-[#F9FAFB]">
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-[#e8e8f0]">
+      <div className="bg-white border-b border-[#D1D5DB]">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-[#635ad9]">Home</Link>
+          <Link href="/" className="hover:text-[#6366F1]">Home</Link>
           <ChevronRight className="w-3 h-3" />
-          <Link href="/shop" className="hover:text-[#635ad9]">Shop</Link>
+          <Link href="/shop" className="hover:text-[#6366F1]">Shop</Link>
           <ChevronRight className="w-3 h-3" />
           <Link
             href={`/shop?category=${product.categorySlug}`}
-            className="hover:text-[#635ad9]"
+            className="hover:text-[#6366F1]"
           >
             {product.category}
           </Link>
@@ -86,7 +139,7 @@ export default function ProductDetailPage({
         <div className="grid lg:grid-cols-2 gap-10 mb-16">
           {/* Image gallery */}
           <div className="space-y-4">
-            <div className="aspect-square bg-white rounded-3xl overflow-hidden border border-[#e8e8f0] relative group">
+            <div className="aspect-square bg-white rounded-3xl overflow-hidden border border-[#D1D5DB] relative group">
               <img
                 src={allImages[selectedImage]}
                 alt={product.name}
@@ -107,8 +160,8 @@ export default function ProductDetailPage({
                     className={cn(
                       "w-20 h-20 rounded-xl overflow-hidden border-2 transition-all shrink-0",
                       i === selectedImage
-                        ? "border-[#635ad9] shadow-md"
-                        : "border-[#e8e8f0] hover:border-[#635ad9]/50"
+                        ? "border-[#6366F1] shadow-md"
+                        : "border-[#D1D5DB] hover:border-[#6366F1]/50"
                     )}
                   >
                     <img
@@ -126,7 +179,7 @@ export default function ProductDetailPage({
           <div className="space-y-5">
             {/* Category + badges */}
             <div className="flex items-center gap-2 flex-wrap">
-              <Badge variant="secondary" className="bg-[#f5f3ff] text-[#635ad9] border-0">
+              <Badge variant="secondary" className="bg-[#EEF2FF] text-[#6366F1] border-0">
                 {product.category}
               </Badge>
               {product.isOrganic && (
@@ -136,7 +189,7 @@ export default function ProductDetailPage({
                 <Badge className="bg-[#fbb400] text-black border-0">New</Badge>
               )}
               {product.isBestSeller && (
-                <Badge className="bg-[#635ad9] text-white border-0">Best Seller</Badge>
+                <Badge className="bg-[#6366F1] text-white border-0">Best Seller</Badge>
               )}
             </div>
 
@@ -170,40 +223,39 @@ export default function ProductDetailPage({
             {/* Price */}
             <div className="flex items-end gap-4">
               <span className="text-4xl font-extrabold text-gray-900">
-                {formatPrice(product.price)}
+                {formatPrice(currentPrice)}
               </span>
               {product.originalPrice > product.price && (
                 <>
                   <span className="text-xl text-gray-400 line-through">
-                    {formatPrice(product.originalPrice)}
+                    {formatPrice(currentOriginalPrice)}
                   </span>
                   <span className="text-sm font-bold text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
-                    Save {formatPrice(product.originalPrice - product.price)}
+                    Save {formatPrice(currentOriginalPrice - currentPrice)}
                   </span>
                 </>
               )}
             </div>
 
-            <Separator className="bg-[#e8e8f0]" />
+            <Separator className="bg-[#D1D5DB]" />
 
-            {/* Weight selector */}
             <div>
               <p className="text-sm font-semibold text-gray-900 mb-2">
-                Select Weight
+                Select {["pc", "pcs", "piece", "pieces", "pack", "packs"].includes(product.unit.toLowerCase()) ? "Quantity" : "Weight"}
               </p>
               <div className="flex flex-wrap gap-2">
-                {weights.map((w) => (
+                {variants.map((v) => (
                   <button
-                    key={w}
-                    onClick={() => setSelectedWeight(w)}
+                    key={v.label}
+                    onClick={() => setSelectedWeight(v.label)}
                     className={cn(
                       "px-4 py-2 rounded-lg border text-sm font-medium transition-all",
-                      selectedWeight === w
-                        ? "border-[#635ad9] bg-[#f5f3ff] text-[#635ad9]"
-                        : "border-[#e8e8f0] text-gray-600 hover:border-[#635ad9]"
+                      selectedWeight === v.label
+                        ? "border-[#6366F1] bg-[#EEF2FF] text-[#6366F1]"
+                        : "border-[#D1D5DB] text-gray-600 hover:border-[#6366F1]"
                     )}
                   >
-                    {w}
+                    {v.label}
                   </button>
                 ))}
               </div>
@@ -211,10 +263,10 @@ export default function ProductDetailPage({
 
             {/* Quantity + Add to cart */}
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2 border border-[#e8e8f0] rounded-xl overflow-hidden">
+              <div className="flex items-center gap-2 border border-[#D1D5DB] rounded-xl overflow-hidden">
                 <button
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-                  className="w-10 h-11 flex items-center justify-center text-gray-600 hover:bg-[#f8f8fd] transition-colors"
+                  className="w-10 h-11 flex items-center justify-center text-gray-600 hover:bg-[#F9FAFB] transition-colors"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
@@ -225,7 +277,7 @@ export default function ProductDetailPage({
                   onClick={() =>
                     setQuantity((q) => Math.min(product.stock, q + 1))
                   }
-                  className="w-10 h-11 flex items-center justify-center text-gray-600 hover:bg-[#f8f8fd] transition-colors"
+                  className="w-10 h-11 flex items-center justify-center text-gray-600 hover:bg-[#F9FAFB] transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
@@ -233,7 +285,7 @@ export default function ProductDetailPage({
 
               <Button
                 onClick={handleAddToCart}
-                className="flex-1 bg-[#635ad9] hover:bg-[#4f46e5] text-white h-11 font-semibold gap-2 shadow-lg shadow-[#635ad9]/25"
+                className="flex-1 bg-[#6366F1] hover:bg-[#4F46E5] text-white h-11 font-semibold gap-2 shadow-lg shadow-[#6366F1]/25"
               >
                 <ShoppingCart className="w-4 h-4" />
                 Add to Cart
@@ -245,7 +297,7 @@ export default function ProductDetailPage({
                   toast.success(inWishlist ? "Removed from wishlist" : "Added to wishlist!");
                 }}
                 className={cn(
-                  "w-11 h-11 rounded-xl border border-[#e8e8f0] flex items-center justify-center transition-colors",
+                  "w-11 h-11 rounded-xl border border-[#D1D5DB] flex items-center justify-center transition-colors",
                   inWishlist
                     ? "text-red-500 border-red-200 bg-red-50"
                     : "text-gray-500 hover:text-red-500 hover:border-red-200"
@@ -259,7 +311,7 @@ export default function ProductDetailPage({
             <Button
               asChild
               variant="outline"
-              className="w-full h-11 border-[#635ad9] text-[#635ad9] hover:bg-[#f5f3ff] font-semibold"
+              className="w-full h-11 border-[#6366F1] text-[#6366F1] hover:bg-[#EEF2FF] font-semibold"
             >
               <Link href="/checkout">Buy Now</Link>
             </Button>
@@ -281,7 +333,7 @@ export default function ProductDetailPage({
               </span>
             </div>
 
-            <Separator className="bg-[#e8e8f0]" />
+            <Separator className="bg-[#D1D5DB]" />
 
             {/* Guarantees */}
             <div className="grid grid-cols-3 gap-4">
@@ -292,10 +344,10 @@ export default function ProductDetailPage({
               ].map(({ icon: Icon, label, sub }) => (
                 <div
                   key={label}
-                  className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-[#f8f8fd] text-center"
+                  className="flex flex-col items-center gap-1.5 p-3 rounded-xl bg-[#F9FAFB] text-center"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-[#f5f3ff] flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-[#635ad9]" />
+                  <div className="w-9 h-9 rounded-xl bg-[#EEF2FF] flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-[#6366F1]" />
                   </div>
                   <p className="text-xs font-semibold text-gray-900">{label}</p>
                   <p className="text-[10px] text-gray-500">{sub}</p>
@@ -306,16 +358,16 @@ export default function ProductDetailPage({
         </div>
 
         {/* Tabs: Description, Reviews */}
-        <div className="bg-white rounded-3xl border border-[#e8e8f0] p-6 mb-16">
+        <div className="bg-white rounded-3xl border border-[#D1D5DB] p-6 mb-16">
           <Tabs defaultValue="description">
-            <TabsList className="mb-6 bg-[#f8f8fd]">
-              <TabsTrigger value="description" className="data-[state=active]:bg-[#635ad9] data-[state=active]:text-white">
+            <TabsList className="mb-6 bg-[#F9FAFB]">
+              <TabsTrigger value="description" className="data-[state=active]:bg-[#6366F1] data-[state=active]:text-white">
                 Description
               </TabsTrigger>
-              <TabsTrigger value="reviews" className="data-[state=active]:bg-[#635ad9] data-[state=active]:text-white">
+              <TabsTrigger value="reviews" className="data-[state=active]:bg-[#6366F1] data-[state=active]:text-white">
                 Reviews ({product.reviewCount})
               </TabsTrigger>
-              <TabsTrigger value="shipping" className="data-[state=active]:bg-[#635ad9] data-[state=active]:text-white">
+              <TabsTrigger value="shipping" className="data-[state=active]:bg-[#6366F1] data-[state=active]:text-white">
                 Shipping
               </TabsTrigger>
             </TabsList>
@@ -338,7 +390,7 @@ export default function ProductDetailPage({
                 <div className="space-y-2">
                   {[
                     ["Tags", product.tags.join(", ")],
-                    ["Stock", `${product.stock} units`],
+                    ["Stock", `${product.stock} ${product.unit}`],
                     ["Organic", product.isOrganic ? "Yes" : "No"],
                   ].map(([k, v]) => (
                     <div key={k} className="flex gap-4 text-sm">
@@ -350,7 +402,7 @@ export default function ProductDetailPage({
               </div>
             </TabsContent>
             <TabsContent value="reviews">
-              <div className="flex items-center gap-6 mb-6 p-5 bg-[#f8f8fd] rounded-2xl">
+              <div className="flex items-center gap-6 mb-6 p-5 bg-[#F9FAFB] rounded-2xl">
                 <div className="text-center">
                   <p className="text-5xl font-extrabold text-gray-900">
                     {product.rating}
@@ -419,10 +471,10 @@ export default function ProductDetailPage({
                 ].map(({ icon: Icon, title, desc }) => (
                   <div
                     key={title}
-                    className="flex gap-3 p-4 rounded-xl border border-[#e8e8f0]"
+                    className="flex gap-3 p-4 rounded-xl border border-[#D1D5DB]"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-[#f5f3ff] flex items-center justify-center shrink-0">
-                      <Icon className="w-4 h-4 text-[#635ad9]" />
+                    <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4 text-[#6366F1]" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900 text-sm">
@@ -441,7 +493,7 @@ export default function ProductDetailPage({
         {related.length > 0 && (
           <div>
             <h2 className="text-xl font-bold text-gray-900 mb-6">
-              Related <span className="text-[#635ad9]">Products</span>
+              Related <span className="text-[#6366F1]">Products</span>
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {related.map((p) => (

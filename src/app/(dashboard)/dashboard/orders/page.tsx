@@ -47,14 +47,14 @@ export default function OrdersPage() {
           <h1 className="text-xl font-bold text-gray-900">Orders</h1>
           <p className="text-sm text-gray-500">{orders.length} total orders</p>
         </div>
-        <Button variant="outline" size="sm" className="gap-2 border-[#e8e8f0]">
+        <Button variant="outline" size="sm" className="gap-2 border-[#D1D5DB]">
           <Download className="w-3.5 h-3.5" />
           Export
         </Button>
       </div>
 
       {/* Filter tabs */}
-      <div className="flex gap-1 overflow-x-auto pb-1 bg-white rounded-xl border border-[#e8e8f0] p-1 w-fit">
+      <div className="flex gap-1 overflow-x-auto pb-1 bg-white rounded-xl border border-[#D1D5DB] p-1 w-fit">
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -62,7 +62,7 @@ export default function OrdersPage() {
             className={cn(
               "px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-all",
               activeTab === tab
-                ? "bg-[#635ad9] text-white shadow-sm"
+                ? "bg-[#6366F1] text-white shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
             )}
           >
@@ -83,16 +83,16 @@ export default function OrdersPage() {
           placeholder="Search orders or customers..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="pl-8 h-9 text-sm border-[#e8e8f0]"
+          className="pl-8 h-9 text-sm border-[#D1D5DB]"
         />
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl border border-[#e8e8f0] overflow-hidden">
+      <div className="bg-white rounded-2xl border border-[#D1D5DB] overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-[#e8e8f0] bg-[#f8f8fd]">
+              <tr className="border-b border-[#D1D5DB] bg-[#F9FAFB]">
                 <th className="text-left py-3.5 px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                   Order
                 </th>
@@ -117,11 +117,11 @@ export default function OrdersPage() {
                 <th className="py-3.5 px-4"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#f0f0f8]">
+            <tbody className="divide-y divide-[#E5E7EB]">
               {filtered.map((order) => (
-                <tr key={order.id} className="hover:bg-[#f8f8fd] transition-colors">
+                <tr key={order.id} className="hover:bg-[#F9FAFB] transition-colors">
                   <td className="py-3.5 px-4">
-                    <span className="font-mono font-medium text-[#635ad9] text-xs">
+                    <span className="font-mono font-medium text-[#6366F1] text-xs">
                       {order.orderNumber}
                     </span>
                   </td>

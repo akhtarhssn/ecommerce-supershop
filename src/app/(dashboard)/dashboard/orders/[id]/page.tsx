@@ -44,11 +44,11 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" className="gap-2 border-[#e8e8f0]">
+          <Button variant="outline" size="sm" className="gap-2 border-[#D1D5DB]">
             <Printer className="w-3.5 h-3.5" />
             Print
           </Button>
-          <Button size="sm" className="gap-2 bg-[#635ad9] hover:bg-[#4f46e5]">
+          <Button size="sm" className="gap-2 bg-[#6366F1] hover:bg-[#4F46E5]">
             <Download className="w-3.5 h-3.5" />
             Download PDF
           </Button>
@@ -57,7 +57,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
 
       {/* Progress tracker */}
       {order.status !== "cancelled" && (
-        <div className="bg-white rounded-2xl border border-[#e8e8f0] p-6">
+        <div className="bg-white rounded-2xl border border-[#D1D5DB] p-6">
           <h3 className="font-semibold text-gray-900 mb-5 text-sm">Order Status</h3>
           <div className="flex items-center">
             {statusSteps.map((step, i) => (
@@ -67,7 +67,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
                     className={cn(
                       "w-9 h-9 rounded-full flex items-center justify-center font-bold text-sm transition-all",
                       i <= currentStep
-                        ? "bg-[#635ad9] text-white"
+                        ? "bg-[#6366F1] text-white"
                         : "bg-gray-100 text-gray-400"
                     )}
                   >
@@ -80,7 +80,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
                   <p
                     className={cn(
                       "text-xs font-medium mt-1.5 capitalize",
-                      i <= currentStep ? "text-[#635ad9]" : "text-gray-400"
+                      i <= currentStep ? "text-[#6366F1]" : "text-gray-400"
                     )}
                   >
                     {step}
@@ -90,7 +90,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
                   <div
                     className={cn(
                       "flex-1 h-0.5 mx-2 transition-all",
-                      i < currentStep ? "bg-[#635ad9]" : "bg-gray-200"
+                      i < currentStep ? "bg-[#6366F1]" : "bg-gray-200"
                     )}
                   />
                 )}
@@ -104,25 +104,25 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
         {/* Invoice */}
         <div className="lg:col-span-2 space-y-5">
           {/* Items */}
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] overflow-hidden">
-            <div className="p-5 border-b border-[#e8e8f0]">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] overflow-hidden">
+            <div className="p-5 border-b border-[#D1D5DB]">
               <h3 className="font-bold text-gray-900">Order Items</h3>
             </div>
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-[#f8f8fd] border-b border-[#e8e8f0]">
+                <tr className="bg-[#F9FAFB] border-b border-[#D1D5DB]">
                   <th className="text-left py-3 px-5 text-xs font-semibold text-gray-500">Product</th>
                   <th className="text-right py-3 px-5 text-xs font-semibold text-gray-500">Price</th>
                   <th className="text-right py-3 px-5 text-xs font-semibold text-gray-500">Qty</th>
                   <th className="text-right py-3 px-5 text-xs font-semibold text-gray-500">Total</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#f0f0f8]">
+              <tbody className="divide-y divide-[#E5E7EB]">
                 {order.items.map((item) => (
                   <tr key={item.productId}>
                     <td className="py-4 px-5">
                       <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#f8f8fd] shrink-0">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden bg-[#F9FAFB] shrink-0">
                           <img src={item.productImage} alt={item.productName} className="w-full h-full object-cover" />
                         </div>
                         <span className="font-medium text-gray-900 text-sm">{item.productName}</span>
@@ -141,7 +141,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
                 ))}
               </tbody>
             </table>
-            <div className="p-5 border-t border-[#e8e8f0] space-y-2">
+            <div className="p-5 border-t border-[#D1D5DB] space-y-2">
               {[
                 { label: "Subtotal", value: formatPrice(order.subtotal) },
                 { label: "Shipping", value: order.shipping === 0 ? "Free" : formatPrice(order.shipping) },
@@ -152,10 +152,10 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
                   <span>{value}</span>
                 </div>
               ))}
-              <Separator className="bg-[#e8e8f0]" />
+              <Separator className="bg-[#D1D5DB]" />
               <div className="flex justify-between font-bold text-base">
                 <span>Total</span>
-                <span className="text-[#635ad9]">{formatPrice(order.total)}</span>
+                <span className="text-[#6366F1]">{formatPrice(order.total)}</span>
               </div>
             </div>
           </div>
@@ -164,10 +164,10 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
         {/* Info cards */}
         <div className="space-y-4">
           {/* Customer */}
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
             <h3 className="font-bold text-gray-900 mb-4 text-sm">Customer</h3>
             <div className="flex items-center gap-3 mb-3">
-              <img src={order.customer.avatar} alt={order.customer.name} className="w-10 h-10 rounded-full bg-[#f5f3ff]" />
+              <img src={order.customer.avatar} alt={order.customer.name} className="w-10 h-10 rounded-full bg-[#EEF2FF]" />
               <div>
                 <p className="font-semibold text-gray-900 text-sm">{order.customer.name}</p>
                 <p className="text-xs text-gray-500">{order.customer.email}</p>
@@ -180,7 +180,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
           </div>
 
           {/* Shipping address */}
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
             <h3 className="font-bold text-gray-900 mb-3 text-sm">Shipping Address</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               {order.shippingAddress.street}<br />
@@ -190,7 +190,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
           </div>
 
           {/* Payment */}
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
             <h3 className="font-bold text-gray-900 mb-3 text-sm">Payment</h3>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -215,7 +215,7 @@ export default async function OrderInvoicePage({ params }: { params: Promise<{ i
           </div>
 
           {/* Status badge */}
-          <div className="bg-white rounded-2xl border border-[#e8e8f0] p-5">
+          <div className="bg-white rounded-2xl border border-[#D1D5DB] p-5">
             <h3 className="font-bold text-gray-900 mb-3 text-sm">Order Status</h3>
             <Badge
               variant="outline"
